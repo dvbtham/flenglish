@@ -1,0 +1,304 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* mix */
+$red: #F70044;
+$white: #FFFFFF;
+$gray: #F8F8F8;
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.ml-30 {
+  margin-left: 30px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.pt-30 {
+  padding-top: 30px;
+}
+
+.float-right {
+  float: right;
+}
+
+.liked {
+  color: $red;
+}
+
+.surround-me-40 {
+  margin: 40px;
+}
+
+.surround-me-100 {
+  margin: 100px;
+}
+
+.full-screen {
+  background-color: $gray;
+}
+
+/* header */
+.normal-me {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.flat {
+  border-radius: 0px !important;
+}
+
+.movies-carousel {
+  position: relative;
+  overflow: hidden;
+  height: 420px;
+  .header-text {
+    position: absolute;
+    top: 80px;
+    left: 44px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    width: 35%;
+    a, p {
+      color: $white;
+    }
+  }
+}
+
+/* features */
+.feature {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.feature-item {
+  .icon {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    i {
+      padding-right: 10px;
+    }
+  }
+  .feature-content {
+    font-size: 15px;
+  }
+}
+
+/* movies */
+.movie-list {
+  .section-header {
+    padding-left: 14px;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .list-item {
+    display: inline-block;
+  }
+  .section-header:after {
+    padding-bottom: 10px;
+  }
+}
+
+.movie-item {
+  background-color: $white;
+  padding: 20px;
+  a.movie-title {
+    margin-top: 8px;
+    display: block;
+    font-size: 18px;
+  }
+  > p {
+    font-style: italic;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.extra-info p {
+  display: inline-block;
+}
+
+.float-right {
+  float: right;
+}
+
+/* right side */
+.aside-movies {
+  background-color: $white;
+}
+
+.rightside-header {
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.aside-movies ul {
+  list-style: none;
+  padding-left: 14px;
+}
+
+.movies {
+  display: inline-block;
+  margin-top: 10px;
+  .item {
+    display: inline-block;
+    clear: both;
+    width: 100%;
+    margin-bottom: 10px;
+    .image {
+      width: 80px;
+      float: left;
+    }
+    .item-info {
+      width: calc(100% - 80px);
+      float: left;
+      padding-left: 10px;
+    }
+  }
+  .item-info {
+    h4 {
+      margin-top: 0px;
+      margin-bottom: 2px;
+      font-size: 14px;
+    }
+    p {
+      font-size: 13px;
+    }
+  }
+  .item .image img {
+    width: 100%;
+  }
+}
+
+.aside-movies form {
+  padding: 20px;
+}
+
+/* custom */
+.nav-tabs > li > a {
+  border-radius: 0px !important;
+}
+.carousel-inner img {width: 100%;}
+
+/* footer */
+footer {
+  margin-top: 20px;
+  background-color: $gray;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .footer-heart {color: $red !important; font-size: 20px;}
+}
+
+
+/* detail */
+.play-box {
+  padding-left: 30px;
+  position: relative;
+  img {
+    width: 100%;
+  }
+}
+
+.overlay {
+  cursor: pointer;
+  opacity: 1;
+  position: absolute !important;
+  top: 15px !important;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  &::before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 30px;
+    margin: -28px 0 0 -24px;
+    border-radius: 13px;
+    background: transparent;
+    text-align: center;
+    padding: 7px 18px;
+    opacity: 1;
+    -webkit-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+    text-decoration: none;
+    background: rgba(255, 152, 75, 0.75);
+    color: $white;
+  }
+}
+
+.user-overview {
+  padding-left: 29px;
+  margin-top: 15px;
+}
+
+.movie-detail {
+  background-color: $white;
+  .heading {
+    h4 {
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    h5 {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.episode-list {
+  a {
+    margin-bottom: 10px;
+  }
+}
+
+.comment-list {
+  margin-top: 30px;
+  list-style: none;
+  display: inline-block;
+  padding-left: 0px;
+}
+
+.comment-item {
+  display: inline-block;
+  margin-bottom: 10px;
+  .image {
+    float: left;
+    float: left;
+    width: 80px;
+    height: 80px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .comment-info {
+    float: left;
+    width: calc(100% - 80px);
+    padding-left: 10px;
+    position: relative;
+  }
+}
+
+.comment-info h5 {
+  margin-top: 0px;
+}
+
+.comment-date {
+  position: absolute;
+  right: 0;
+}

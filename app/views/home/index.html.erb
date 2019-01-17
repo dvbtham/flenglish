@@ -1,0 +1,121 @@
+<div class="full-screen">
+  <div id="myCarousel" class="carousel movies-carousel slide"
+    data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <%= render "home/slider" %>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only"><%=  t :previous %></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only"><%= t :next %></span>
+    </a>
+  </div>
+</div>
+<div class="feature surround-me-100">
+  <div class="row">
+    <%= render "home/feature" %>
+  </div>
+</div>
+
+<div class="full-screen mt-30">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9 movie-list">
+        <div class="list-item">
+          <%= render "home/feature_movie" %>
+        </div>
+        <!-- movies by level 1 will goes here -->
+        <div class="list-item">
+          <%= render "home/feature_movie" %>
+        </div>
+        <!-- movies by level 2 will goes here -->
+        <div class="list-item">
+          <%= render "home/feature_movie" %>
+        </div>
+      </div>
+      <div class="col-md-3 rightside">
+        <h3 class="rightside-header">
+          <%= t :movies_month %>
+        </h3>
+        <div class="aside-movies">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <%= link_to t(:daily), "#daily", {"data-toggle": "tab"} %>
+            </li>
+            <li>
+               <%= link_to t(:weekly), "#weekly", {"data-toggle": "tab"} %>
+            </li>
+            <li>
+              <%= link_to t(:monthly), "#monthly", {"data-toggle": "tab"} %>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div id="daily" class="tab-pane fade in active">
+              <ul class="movies">
+                <%= render "home/movie" %>
+              </ul>
+            </div>
+            <div id="weekly" class="tab-pane fade in">
+              <ul class="movies">
+                <%= render "home/movie" %>
+              </ul>
+            </div>
+            <div id="monthly" class="tab-pane fade in">
+              <ul class="movies">
+                <%= render "home/movie" %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <h3 class="rightside-header">
+          <%= t :series_month %>
+        </h3>
+        <div class="aside-movies">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <%= link_to t(:daily), "#serie-daily",
+                {"data-toggle": "tab"} %>
+            </li>
+            <li>
+               <%= link_to t(:weekly), "#serie-weekly",
+                {"data-toggle": "tab"} %>
+            </li>
+            <li>
+              <%= link_to t(:monthly), "#serie-monthly",
+                {"data-toggle": "tab"} %>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div id="serie-daily" class="tab-pane fade in active">
+              <ul class="movies">
+                <%= render "home/movie" %>
+              </ul>
+            </div>
+            <div id="serie-weekly" class="tab-pane fade in">
+              <ul class="movies">
+                <%= render "home/movie" %>
+              </ul>
+            </div>
+            <div id="serie-monthly" class="tab-pane fade in">
+              <ul class="movies">
+                <%= render "home/movie" %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <h3 class="rightside-header"><%= t :suggest_movie %></h3>
+        <div class="aside-movies">
+          <%= render "layouts/suggest_form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

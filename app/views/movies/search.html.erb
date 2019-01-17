@@ -1,0 +1,30 @@
+<div class="full-screen mt-20">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="input-group ml-30 mt-20">
+        <span class="input-group-btn">
+          <%= select(:level, :level, (1..3).collect {|p|%w(value key)},
+            {prompt: t("filter.level")}, class: "btn btn-default btn-sort") %>
+          <%= select(:sort_by, :sort_by, (1..3).collect {|p|%w(value key)},
+            {prompt: t("filter.newest")}, class: "btn btn-default btn-sort") %>
+          <%= select(:category, :category_id, (1..3).collect {|p|%w(value key)},
+            {prompt: t("filter.category")},
+            class: "btn btn-default btn-sort") %>
+          <%= select(:genre, :genre_id, (1..3).collect {|p|%w(value key)},
+            {prompt: t("filter.genre")}, class: "btn btn-default btn-sort") %>
+        </span>
+      </div>
+      <div class="col-md-9 movie-list">
+        <div class="list-item">
+          <%= render "home/feature_movie" %>
+        </div>
+      </div>
+      <div class="col-md-3 rightside">
+        <h3 class="rightside-header"><%= t :suggest_movie %></h3>
+        <div class="aside-movies">
+          <%= render "layouts/suggest_form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
