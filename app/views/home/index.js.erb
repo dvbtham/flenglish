@@ -1,0 +1,3 @@
+jQuery('#feature-movies')
+  .html('<%= j render("home/feature_movie", movies: @home.feature_movies) %>');
+$('.pagination a').attr('data-remote', 'true');

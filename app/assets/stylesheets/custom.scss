@@ -101,9 +101,16 @@ $gray: #F8F8F8;
     font-size: 17px;
     font-weight: bold;
     text-transform: uppercase;
+    .view-all {
+      float: right;
+      text-transform: lowercase;
+      font-size: 16px;
+      font-weight: normal;
+    }
   }
   .list-item {
     display: inline-block;
+    clear: both;
   }
   .section-header:after {
     padding-bottom: 10px;
@@ -116,7 +123,7 @@ $gray: #F8F8F8;
   a.movie-title {
     margin-top: 8px;
     display: block;
-    font-size: 18px;
+    font-size: 17px;
   }
   > p {
     font-style: italic;

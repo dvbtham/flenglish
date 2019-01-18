@@ -15,4 +15,7 @@ class Movie < ApplicationRecord
   has_many :user_movies, dependent: :destroy
   has_many :users, through: :user_movies
   has_many :comments, dependent: :destroy
+
+  scope :newest, ->{order :created_at}
+  scope :features, ->{where is_feature: true}
 end

@@ -1,21 +1,21 @@
-<h3 class="section-header"><%= t "feature.title" %></h3>
-<% (1..8).each do |thing| %>
+<% movies.each do |movie| %>
   <div class="col-md-3 movie-item">
-    <%= image_tag "/uploads/mv-1.jpg" %>
-    <%= link_to(movies_detail_path(id: 1), class: "movie-title") do %>
-      <%= t "movie.title.en" %>
-    <% end %>
-    <p class="movie-title">
-      <%= t "movie.title.vi" %>
+  <%= image_tag movie.image_url, class: "img-responsive" %>
+  <%= link_to(movie_path(id: movie.id), class: "movie-title") do %>
+    <%= summary movie.title_en, Settings.summary.title_en %>
+  <% end %>
+  <p class="movie-title">
+    <%= summary movie.title_vi, Settings.summary.title_vi %>
+  </p>
+  <div class="extra-info">
+    <p class="liked">
+      <i class="glyphicon glyphicon-heart"></i>
+      <%= t :favorite %>
     </p>
-    <div class="extra-info">
-      <p class="liked">
-        <i class="glyphicon glyphicon-heart"></i>
-        <%= t :favorite %>
-      </p>
-      <p class="float-right">
-        <i class="glyphicon glyphicon-user"></i>
-      </p>
-    </div>
+    <p class="float-right">
+      <i class="glyphicon glyphicon-user"></i>
+    </p>
   </div>
+</div>
 <% end %>
+<%= will_paginate movies unless defined? not_paginate %>
