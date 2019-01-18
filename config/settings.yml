@@ -10,3 +10,7 @@ summary:
   title_vi: 25
 error_status:
   internal: 500
+admin:
+  summary:
+    movie:
+      title: 40

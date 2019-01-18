@@ -1,0 +1,10 @@
+<tr>
+  <td class="td-movie"><%= image_tag movie.image_url %></td>
+  <td><%= summary movie.title_en, Settings.admin.summary.movie.title %></td>
+  <td><%= movie.category_name %></td>
+  <td><%= movie.genre_names %></td>
+  <td><%= movie.total_episodes %></td>
+  <td><%= movie.views %></td>
+  <td><%= movie.rating %></td>
+  <td><%= %></td>
+</tr>
