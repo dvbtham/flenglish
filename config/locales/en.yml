@@ -16,6 +16,13 @@ en:
   next: "Next"
   toggle_navigation: "Toggle navigation"
   language: "en | vi"
+  feature_movies: "Feature movies"
+  level: "Level"
+  movies_in_level: "Movies in "
+  view_all: "View all"
+  daily: "Daily"
+  weekly: "Weekly"
+  monthly: "Monthly"
 
   # Just for static pages, get data for each language from database later.
   movie:
