@@ -8,4 +8,8 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def summary content, size
+    content.length <= size ? content : truncate(content, length: size)
+  end
 end
