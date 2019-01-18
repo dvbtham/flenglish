@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
   belongs_to :category
+  belongs_to :level
   has_and_belongs_to_many :genres
   has_many :favorites
   has_many :users, through: :favorites
@@ -14,6 +15,4 @@ class Movie < ApplicationRecord
   has_many :user_movies, dependent: :destroy
   has_many :users, through: :user_movies
   has_many :comments, dependent: :destroy
-
-  enum level: %i(beginner medium advanced)
 end
