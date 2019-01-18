@@ -1,2 +1,52 @@
 en:
   app_name: "Flenglish"
+  footer_text: "made with <span class='footer-heart'>&hearts;</span>
+    by Tham and Nguyen Trung Tien"
+  home: "Home"
+  tips: "Tips"
+  search:
+    name: "Search"
+    basic: "Basic"
+    advance: "Advance"
+    placeholder: "Enter movie name..."
+  profile: "Profile"
+  logout: "Logout"
+  watch_movie: "Watch"
+  previous: "Previous"
+  next: "Next"
+  toggle_navigation: "Toggle navigation"
+  language: "en | vi"
+
+  # Just for static pages, get data for each language from database later.
+  movie:
+    title:
+      vi: "Tình yêu kỳ lạ"
+      en: "Alex Strangelove (2018)"
+    content: "Alex Strangelove xoay quanh nhân vật
+      Alex Truelove (Daniel Doheny đóng), một học sinh trung học giỏi toàn
+      diện với cô bạn gái xinh xắn và thông minh tên Claire..."
+
+  feature:
+    title: "Lorem ipsum dolor sit amet"
+    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Non at fuga asperiores, dicta culpa minus nesciunt eius, facere ipsa
+      in fugit nihil enim. Voluptate alias totam quo numquam laborum dolorem?"
+
+  send_suggest: "Send"
+  movies_month: "Movies this month"
+  series_month: "Series this month"
+  recommended_movies: "Recommended for you"
+  description: "Description"
+  comment:
+    one: "Comment (%{count})"
+    other: "Comments (%{count})"
+  send: "Send"
+  show:
+    vocabularies: "Vocabularies"
+    conversation: "Conversation"
+  filter:
+    level: "By level..."
+    genre: "By genre..."
+    newst: "Newest..."
+    category: "By category..."
+

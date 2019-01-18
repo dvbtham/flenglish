@@ -1,0 +1,13 @@
+<% (1..5).each do |thing| %>
+  <li class="item">
+    <div class="image">
+      <%= image_tag "/uploads/mv-1.jpg" %>
+    </div>
+    <div class="item-info">
+      <h4><%= t "movie.title.en" %></h4>
+      <p class="text-muted">
+        <%= t "movie.title.vi" %>
+      </p>
+    </div>
+  </li>
+<% end %>

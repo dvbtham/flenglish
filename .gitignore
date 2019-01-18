@@ -49,3 +49,10 @@ node_modules/
 
 # Ignore database.yml
 config/database.yml
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+
+# Ignore uploads folder
+public/uploads

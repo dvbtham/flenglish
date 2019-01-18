@@ -1,7 +1,47 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+seed = Settings.seed
+
+Category.create! name: "Phim bộ"
+Category.create! name: "Phim lẻ"
+
+5.times do |n|
+  Genre.create! name: Faker::Book.genre
+end
+
+User.create!(full_name: "Thâm Davies",
+             email: "thamdv96@gmail.com",
+             gender: User.genders[:male],
+             date_of_birth: "1996-09-15",
+             password: "123123",
+             password_confirmation: "123123",
+             role: 1,
+             activated: true,
+             activated_at: Time.zone.now)
+
+20.times do |n|
+  name = Faker::Name.name
+  email = "user-#{n+1}@flenglish.edu"
+  password = "password"
+  User.create!(full_name: name,
+               email: email,
+               gender: Faker::Number.between(0, 1),
+               date_of_birth: Faker::Date.birthday(16, 60),
+               password: password,
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
+end
+
+30.times do |n|
+  image_slug = Faker::Lorem.word
+  category_id = Faker::Number.between(1, 2)
+  level = n%2 == 0 ? Movie.levels[:beginner] : Movie.levels[:advanced]
+  Movie.create!(title: Faker::Lorem.sentence,
+                description: Faker::Lorem.paragraph(10),
+                image_url: Faker::Avatar.image(image_slug),
+                category_id: category_id,
+                level: level,
+                total_episodes: Faker::Number.between(16, 30),
+                is_feature: n%2 ? true : false,
+                rating: Faker::Number.decimal(2),
+                views: Faker::Number.number(3))
+end

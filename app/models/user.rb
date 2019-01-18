@@ -17,4 +17,9 @@ class User < ApplicationRecord
   # many to many relationship to user_movies table
   has_many :user_movies, dependent: :destroy
   has_many :movies, through: :user_movies
+
+  enum gender: %i(male female)
+  enum role: %i(member admin)
+
+  has_secure_password
 end

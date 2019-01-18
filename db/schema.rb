@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_01_16_053104) do
 
   create_table "movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.string "image_url"
     t.integer "category_id"
     t.integer "level"

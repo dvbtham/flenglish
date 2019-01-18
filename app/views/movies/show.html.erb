@@ -1,0 +1,75 @@
+<div class="full-screen mt-20">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="play-box">
+            <%= link_to("#") do %>
+              <%= image_tag "/uploads/mv-1.jpg" %>
+            <% end %>
+            <div class="overlay glyphicon glyphicon-play"></div>
+          </div>
+          <div class="user-overview">
+            <%= link_to(t(".vocabularies"), "#{}",
+              class: "btn btn-info btn-block flat") %>
+            <%= link_to(t(".conversation"), "#{}",
+              class: "btn btn-info btn-block flat") %>
+          </div>
+          <h3 class="rightside-header"><%= t :suggest_movie %></h3>
+          <div class="aside-movies ml-30">
+            <%= render "layouts/suggest_form" %>
+          </div>
+        </div>
+        <div class="col-md-6 movie-detail">
+          <div class="heading">
+            <h4><%= t("movie.title.en") %></h4>
+            <p><%= t("movie.title.vi") %></p>
+            <hr>
+            <h4><%= t("episodes") %></h4>
+            <div class="episode-list">
+              <% (1..30).each do |n| %>
+                <%= link_to("#{n}", "#", class: "btn flat btn-default") %>
+              <% end %>
+            </div>
+            <hr>
+            <h4><%= t("description") %></h4>
+            <div class="movie-script">
+              <%= t("movie.content") %>
+            </div>
+          </div>
+          <div class="comment-box">
+            <hr>
+            <h4><%= t :comment, count: 12 %></h4>
+            <hr>
+            <%= form_for(:comment) do |f| %>
+              <div class="form-group">
+                <%= f.text_area :content, class: "form-control flat" %>
+              </div>
+              <%= f.submit t(:send), class: "btn btn-primary flat" %>
+            <% end %>
+            <ul class="comment-list">
+              <li class="comment-item">
+                <div class="image">
+                  <%= link_to("#") do %>
+                    <%= image_tag "/uploads/mv-1.jpg" %>
+                  <% end %>
+                </div>
+                <div class="comment-info">
+                  <div class="comment-date text-muted">12/12/2018</div>
+                  <h5><strong>Tham Davies</strong></h5>
+                  <p><%= t("feature.content") %></p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 rightside">
+          <h3 class="rightside-header"><%= t :recommended_movies %></h3>
+          <div class="aside-movies">
+            <ul class="movies">
+              <%= render "home/movie" %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

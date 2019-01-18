@@ -1,0 +1,5 @@
+seed:
+  male: 0
+  female: 1
+  min_age: 16
+  max_age: 60

@@ -14,4 +14,6 @@ class Movie < ApplicationRecord
   has_many :user_movies, dependent: :destroy
   has_many :users, through: :user_movies
   has_many :comments, dependent: :destroy
+
+  enum level: %i(beginner medium advanced)
 end
