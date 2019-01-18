@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 git_source(:github){|repo| "https://github.com/#{repo}.git"}
-
 ruby "2.5.1"
 
 gem "bcrypt", "3.1.12"
@@ -15,8 +14,8 @@ gem "i18n-js", "3.2.0"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails", "~> 4.3"
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
-gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.2"
+gem "rails-i18n", "~> 5.1"
 gem "rubocop", "~> 0.54.0", require: false
 gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"

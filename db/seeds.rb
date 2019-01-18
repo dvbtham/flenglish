@@ -38,7 +38,6 @@ end
 30.times do |n|
   image_slug = Faker::Lorem.word
   category_id = Faker::Number.between(1, 2)
-  level = n%2 == 0 ? Movie.levels[:beginner] : Movie.levels[:advanced]
   Movie.create!(title_en: Faker::Lorem.sentence,
                 title_vi: Faker::Lorem.sentence,
                 description: Faker::Lorem.paragraph(10),
