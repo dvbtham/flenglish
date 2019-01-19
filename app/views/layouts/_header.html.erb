@@ -29,10 +29,11 @@
           <% end %>
           </li>
         </ul>
-        <form class="navbar-form navbar-left">
+        <%= form_tag search_movies_path, method: :get, enforce_utf8: false,
+          class: "navbar-form navbar-left" do %>
           <div class="input-group">
-            <input type="text" class="form-control"
-              placeholder="<%= t "search.placeholder" %>" name="q">
+            <%= text_field_tag :term, params[:term], class: "form-control",
+              placeholder: t("search.placeholder") %>
             <div class="input-group-btn">
               <button tabindex="-1" data-toggle="dropdown"
                 class="btn btn-default flat dropdown-toggle" type="button">
@@ -43,12 +44,13 @@
                 <li><%= link_to t("search.basic"), "#" %></li>
                 <li><%= link_to t("search.advance"), search_movies_path %></li>
               </ul>
-              <button tabindex="-1" class="btn btn-default" type="button">
-                <i class="glyphicon glyphicon-search"></i> <%= t "search.name" %>
-              </button>
+              <%= submit_tag t("search.name"), name: nil,
+                class: "btn btn-default" do %>
+                <i class="glyphicon glyphicon-search"></i>
+              <% end %>
             </div>
           </div>
-        </form>
+        <% end %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to(t("language"), "#") %></li>
           <li class="dropdown">
