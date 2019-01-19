@@ -1,3 +1,4 @@
 $('#movies').html('<%= j render(partial: "home/feature_movie",\
   collection: @movies, as: :movie,\
   locals: {collection: @movies}) %>');
+$('#result-count').html('<%= t "result", count: @movies.size %>');

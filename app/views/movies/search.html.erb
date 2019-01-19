@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <%= form_tag search_movies_path, method: :get, enforce_utf8: false,
-        class: "navbar-form navbar-left" do %>
+        class: "navbar-form navbar-left", remote: true do %>
         <div class="input-group ml-30 mt-20">
           <span class="input-group-btn">
             <%= select_tag(:level, options_for_select(@levels),
@@ -26,10 +26,11 @@
             <%= link_to t("filter_reset"), search_movies_path,
               class: "btn btn-danger flat" %>
           </div>
+          <%= hidden_field_tag :term, params[:term] %>
         </div>
       <% end %>
       <div class="col-md-9 movie-list">
-        <h3 class="section-header">
+        <h3 class="section-header" id="result-count">
           <%= t("search_result", count: @movies.total_entries,
             term: params[:term]) if params[:term].present? %>
           <%= t("result", count: @movies.total_entries,
