@@ -10,7 +10,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to(root_path, class: "navbar-brand") do %>
+        <%= link_to(root_path, class: "navbar-brand", "data-turbolinks": false) do %>
           <i class="glyphicon glyphicon-film"> </i> <%= t(:app_name) %>
         <% end %>
       </div>
@@ -18,7 +18,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="active">
-            <%= link_to(root_path) do %>
+            <%= link_to(root_path, "data-turbolinks": false) do %>
               <i class="glyphicon glyphicon-home"> </i>
               <%= t :home %> <span class="sr-only">(current)</span></a></li>
             <% end %>
@@ -32,8 +32,10 @@
         <%= form_tag search_movies_path, method: :get, enforce_utf8: false,
           class: "navbar-form navbar-left" do %>
           <div class="input-group">
-            <%= text_field_tag :term, params[:term], class: "form-control",
-              placeholder: t("search.placeholder") %>
+            <%= text_field_tag :term, params[:term],
+              class: "form-control ui-autocomplete-input",
+              placeholder: t("search.placeholder"),
+              data: { autocomplete_source: json_movies_path} %>
             <div class="input-group-btn">
               <button tabindex="-1" data-toggle="dropdown"
                 class="btn btn-default flat dropdown-toggle" type="button">
@@ -67,3 +69,4 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+

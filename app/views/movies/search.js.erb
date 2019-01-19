@@ -1,3 +1,4 @@
-jQuery('#movies')
-  .html('<%= j render("home/feature_movie", movies: @movies) %>');
+$('#movies')
+  .html('<%= j render("home/feature_movie", movies: @search.movies) %>');
 $('.pagination a').attr('data-remote', 'true');
+$('#result-count').html('<%= t "result", count: @search.movies.size %>');

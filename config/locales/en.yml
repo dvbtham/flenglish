@@ -68,4 +68,6 @@ en:
   result:
     one: "%{count} result"
     other: "%{count} results"
-
+  genre:
+    single: "Single"
+    series: "Series"

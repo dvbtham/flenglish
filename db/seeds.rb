@@ -1,7 +1,7 @@
 seed = Settings.seed
 
-Category.create! name: "Phim bộ"
-Category.create! name: "Phim lẻ"
+Category.create! name: I18n.t("genre.single")
+Category.create! name: I18n.t("genre.series")
 
 5.times do |n|
   Genre.create! name: Faker::Book.genre
@@ -38,7 +38,6 @@ end
 30.times do |n|
   image_slug = Faker::Lorem.word
   category_id = Faker::Number.between(1, 2)
-  level = n%2 == 0 ? Movie.levels[:beginner] : Movie.levels[:advanced]
   Movie.create!(title_en: Faker::Lorem.sentence,
                 title_vi: Faker::Lorem.sentence,
                 description: Faker::Lorem.paragraph(10),
@@ -49,4 +48,10 @@ end
                 is_feature: n%2 ? true : false,
                 rating: Faker::Number.decimal(2),
                 views: Faker::Number.number(3))
+end
+
+# Seed data to genres_movies table
+movies = Movie.all
+movies.each do |movie|
+  movie.genres << Genre.find_or_create_by(id: Faker::Number.between(1, 5))
 end
