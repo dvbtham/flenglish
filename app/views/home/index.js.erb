@@ -1,4 +1,5 @@
 $('#feature-movies')
   .html('<%= j render(partial: "feature_movie",\
-    collection: @home.feature_movies, as: :movie) %>');
+    collection: @home.feature_movies, as: :movie,\
+    locals: {collection: @home.feature_movies}) %>');
 $('.pagination a').attr('data-remote', 'true');

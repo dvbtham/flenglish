@@ -23,6 +23,9 @@ en:
   daily: "Daily"
   weekly: "Weekly"
   monthly: "Monthly"
+  search_result:
+    one: "%{count} result for %{term}"
+    other: "%{count} results for %{term}"
 
   # Just for static pages, get data for each language from database later.
   movie:
@@ -52,10 +55,19 @@ en:
     vocabularies: "Vocabularies"
     conversation: "Conversation"
   filter:
+    name: "Filter"
     level: "By level..."
     genre: "By genre..."
-    newst: "Newest..."
+    newst: "Sort by..."
     category: "By category..."
+  sort_column:
+    feature: "Features"
+    newest: "Newest"
+    views: "Mosted views"
+  filter_reset: "Reset filter"
+  result:
+    one: "%{count} result"
+    other: "%{count} results"
 
   admin:
     views:
