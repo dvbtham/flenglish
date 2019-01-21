@@ -1,5 +1,3 @@
-seed = Settings.seed
-
 Category.create! name: I18n.t("genre.single")
 Category.create! name: I18n.t("genre.series")
 
@@ -42,11 +40,11 @@ end
                 title_vi: Faker::Lorem.sentence,
                 description: Faker::Lorem.paragraph(10),
                 image_url: Faker::Avatar.image(image_slug),
-                video_url: "https://www.youtube.com/watch?v=a339H_aqXx0",
                 category_id: category_id,
                 level_id: Faker::Number.between(1,4),
-                total_episodes: Faker::Number.between(16, 30),
-                is_feature: n%2 ? true : false,
+                total_episodes: Faker::Number.between(1, 30),
+                is_feature: n%2 == 0 ? true : false,
+                is_single: n%2 ==0 ? true : false,
                 rating: Faker::Number.decimal(2),
                 views: Faker::Number.number(3))
 end
@@ -55,8 +53,18 @@ end
 movies = Movie.all
 movies.each do |movie|
   movie.genres << Genre.find_or_create_by(id: Faker::Number.between(1, 5))
+  movie.update_attribute :total_episodes, 1 if movie.is_single?
   movie.total_episodes.times do |index|
     movie.episodes.create(name: "#{index+1}",
-      video_url: "https://www.youtube.com/watch?v=a339H_aqXx0")
+      video_url: "https://www.youtube.com/embed/tLNOce4Y4uc")
+  end
+end
+
+episodes = Episode.all
+episodes.each do |episode|
+  10.times do
+    episode.subtitles.create!(vietsub: Faker::Lorem.sentence,
+                              engsub: Faker::Lorem.sentence,
+                              subtitle_at: Faker::Number.between(0, 180))
   end
 end

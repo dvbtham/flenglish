@@ -7,5 +7,9 @@ Rails.application.routes.draw do
       get :search
       get :json, to: "movies#movies"
     end
+
+    member do
+      get :watch
+    end
   end
 end

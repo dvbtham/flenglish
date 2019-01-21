@@ -73,3 +73,6 @@ en:
     series: "Series"
   not_found: "Not found"
   not_found_content: "Opps! The page you're entered could not be found."
+  player:
+    cant_play: "Can't play this video now. Please come back later."
+  subtitles: "Subtitles"

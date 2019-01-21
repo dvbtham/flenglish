@@ -1,6 +1,12 @@
 app.Movies = function() {
   this._input = $('#term');
   this._initAutocomplete();
+  $(".overlay").on('click', function() {
+    window.location.href = $('a.video_url').attr("href");
+  });
+  if($("iframe").attr("src") === ""){
+    $("iframe").remove();
+  }
 };
 
 app.Movies.prototype = {

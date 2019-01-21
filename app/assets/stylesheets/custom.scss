@@ -357,3 +357,30 @@ ul.ui-autocomplete {
   font-weight: bold;
   font-size: 35px;
 }
+
+/* watch */
+.watch-box {
+  width: 100%;
+  height: auto;
+  > iframe {
+    width: 100%;
+    height: 456px;
+  }
+}
+.sub-item {
+  border-bottom: 1px solid $gray-bold;
+  .item-info {
+    padding-bottom: 2px;
+    padding-top: 8px;
+    position: relative;
+    .save-sub {
+      position: absolute;
+      right: 7px;
+      top: 40%;
+      font-size: 20px;
+    }
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}

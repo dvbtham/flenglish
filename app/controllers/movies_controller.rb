@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :load_movie, only: :show
+  before_action :load_movie, only: %i(show watch)
 
   def show; end
 
@@ -24,10 +24,16 @@ class MoviesController < ApplicationController
     end
   end
 
+  def watch
+    return if params[:url]
+    flash.now[:danger] = t "player.cant_play"
+    render :watch
+  end
+
   private
 
   def load_movie
-    @movie = Movie.find_by id: params[:id]
+    @movie = Movie.find_by(id: params[:id])
     return if @movie
 
     redirect_to page_404_path

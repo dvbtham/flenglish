@@ -1,28 +1,16 @@
 <div class="full-screen mt-20">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3">
-          <div class="play-box">
-            <%= link_to(watch_movie_path(id: @movie.id,
-              url: @movie.episodes.first.video_url), class: "video_url") do %>
-                <%= image_tag @movie.image_url, class: "img-responsive" %>
-            <% end %>
-            <div class="overlay glyphicon glyphicon-play"></div>
-          </div>
-          <div class="user-overview">
-            <%= link_to(t(".vocabularies"), "#{}",
-              class: "btn btn-info btn-block flat") %>
-            <%= link_to(t(".conversation"), "#{}",
-              class: "btn btn-info btn-block flat") %>
-          </div>
-          <h3 class="rightside-header"><%= t :suggest_movie %></h3>
-          <div class="aside-movies ml-30">
-            <%= render "layouts/suggest_form" %>
-          </div>
-        </div>
-        <div class="col-md-6 movie-detail">
+        <div class="col-md-8 movie-detail mt-20 ml-30">
           <div class="heading">
-            <h4><%= @movie.title_en %></h4>
+            <div class="watch-box">
+              <%= render "layouts/flash" %>
+              <iframe src="<%= params[:url] %>" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media;
+                  gyroscope; picture-in-picture" allowfullscreen>
+              </iframe>
+            </div>
+            <h4><%= link_to @movie.title_en, movie_path(@movie.id) %></h4>
             <p><%= @movie.title_vi %></p>
             <hr>
             <h4><%= t("episodes") %></h4>
@@ -30,7 +18,7 @@
               <% @movie.episodes.each do |episode| %>
                 <%= link_to(episode.name,
                   watch_movie_path(id: @movie.id, url: episode.video_url),
-                  class: "btn flat btn-default") %>
+                  class: "btn flat btn-#{episode.video_url == params[:url] ? 'info' : 'default' }") %>
               <% end %>
             </div>
             <hr>
@@ -65,11 +53,11 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-3 rightside">
-          <h3 class="rightside-header"><%= t :recommended_movies %></h3>
+        <div class="col-md-3 rightside ml-0">
+          <h3 class="rightside-header"><%= t :subtitles %></h3>
           <div class="aside-movies">
-            <ul class="movies">
-              <%= render "home/movie" %>
+            <ul class="subtitles">
+              <%= render "movies/subtitle" %>
             </ul>
           </div>
         </div>
