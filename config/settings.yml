@@ -8,3 +8,5 @@ home:
 summary:
   title_en: 20
   title_vi: 25
+errors:
+  _404: 404

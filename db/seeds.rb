@@ -42,6 +42,7 @@ end
                 title_vi: Faker::Lorem.sentence,
                 description: Faker::Lorem.paragraph(10),
                 image_url: Faker::Avatar.image(image_slug),
+                video_url: "https://www.youtube.com/watch?v=a339H_aqXx0",
                 category_id: category_id,
                 level_id: Faker::Number.between(1,4),
                 total_episodes: Faker::Number.between(16, 30),
@@ -54,4 +55,8 @@ end
 movies = Movie.all
 movies.each do |movie|
   movie.genres << Genre.find_or_create_by(id: Faker::Number.between(1, 5))
+  movie.total_episodes.times do |index|
+    movie.episodes.create(name: "#{index+1}",
+      video_url: "https://www.youtube.com/watch?v=a339H_aqXx0")
+  end
 end

@@ -10,7 +10,7 @@
               class: "btn btn-default btn-sort") %>
             <%= select_tag(:sort_by,
               options_for_select(@search.sort_by),
-              include_blank: t("filter.newest"),
+              include_blank: t("filter.sort_by"),
               class: "btn btn-default btn-sort") %>
             <%= select_tag(:category,
               options_for_select(@search.categories),

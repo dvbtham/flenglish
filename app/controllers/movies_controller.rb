@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :load_movie, only: :show
+
   def show; end
 
   # render to json for autocomplete search
@@ -20,5 +22,14 @@ class MoviesController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  private
+
+  def load_movie
+    @movie = Movie.find_by id: params[:id]
+    return if @movie
+
+    redirect_to page_404_path
   end
 end

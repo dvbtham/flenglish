@@ -4,7 +4,7 @@
         <div class="col-md-3">
           <div class="play-box">
             <%= link_to("#") do %>
-              <%= image_tag "/uploads/mv-1.jpg" %>
+              <%= image_tag @movie.image_url, class: "img-responsive" %>
             <% end %>
             <div class="overlay glyphicon glyphicon-play"></div>
           </div>
@@ -21,19 +21,20 @@
         </div>
         <div class="col-md-6 movie-detail">
           <div class="heading">
-            <h4><%= t("movie.title.en") %></h4>
-            <p><%= t("movie.title.vi") %></p>
+            <h4><%= @movie.title_en %></h4>
+            <p><%= @movie.title_vi %></p>
             <hr>
             <h4><%= t("episodes") %></h4>
             <div class="episode-list">
-              <% (1..30).each do |n| %>
-                <%= link_to("#{n}", "#", class: "btn flat btn-default") %>
+              <% @movie.episodes.each_with_index do |episode, index| %>
+                <%= link_to(episode.name, "#",
+                  class: "btn flat btn-default") %>
               <% end %>
             </div>
             <hr>
             <h4><%= t("description") %></h4>
             <div class="movie-script">
-              <%= t("movie.content") %>
+              <%= @movie.description %>
             </div>
           </div>
           <div class="comment-box">
