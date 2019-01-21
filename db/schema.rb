@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_053104) do
+ActiveRecord::Schema.define(version: 2019_01_18_065209) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(version: 2019_01_16_053104) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "movie_followings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "movie_id"
@@ -67,11 +71,12 @@ ActiveRecord::Schema.define(version: 2019_01_16_053104) do
   end
 
   create_table "movies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
+    t.string "title_en"
+    t.string "title_vi"
     t.text "description"
     t.string "image_url"
     t.integer "category_id"
-    t.integer "level"
+    t.integer "level_id"
     t.integer "total_episodes"
     t.boolean "is_feature"
     t.float "rating"

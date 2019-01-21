@@ -7,6 +7,10 @@ Category.create! name: "Phim lẻ"
   Genre.create! name: Faker::Book.genre
 end
 
+4.times do |n|
+  Level.create! name: "Level #{n}"
+end
+
 User.create!(full_name: "Thâm Davies",
              email: "thamdv96@gmail.com",
              gender: User.genders[:male],
@@ -35,11 +39,12 @@ end
   image_slug = Faker::Lorem.word
   category_id = Faker::Number.between(1, 2)
   level = n%2 == 0 ? Movie.levels[:beginner] : Movie.levels[:advanced]
-  Movie.create!(title: Faker::Lorem.sentence,
+  Movie.create!(title_en: Faker::Lorem.sentence,
+                title_vi: Faker::Lorem.sentence,
                 description: Faker::Lorem.paragraph(10),
                 image_url: Faker::Avatar.image(image_slug),
                 category_id: category_id,
-                level: level,
+                level_id: Faker::Number.between(1,4),
                 total_episodes: Faker::Number.between(16, 30),
                 is_feature: n%2 ? true : false,
                 rating: Faker::Number.decimal(2),
