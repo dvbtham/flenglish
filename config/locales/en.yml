@@ -115,3 +115,6 @@ en:
             phone: "Phone"
             comments: "Total comments"
             suggests: "Total suggests"
+  genre:
+    single: "Single"
+    series: "Series"
