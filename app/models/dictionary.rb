@@ -1,3 +1,3 @@
 class Dictionary < ApplicationRecord
-  has_many :vocabularies
+  validates :word_en, :word_vi, :pronounciation, presence: true
 end

@@ -1,20 +1,24 @@
 class Movie < ApplicationRecord
   include Filterable
+
   belongs_to :category
   belongs_to :level
-  has_and_belongs_to_many :genres
-  has_many :favorites
-  has_many :users, through: :favorites
+  has_many :user_favorited, dependent: :destroy, foreign_key: :movie_id,
+    class_name: Favorite.name
+  has_many :favoriters, through: :user_favorited, source: :user
   has_many :episodes
-  has_and_belongs_to_many :dirictionaries
-  has_and_belongs_to_many :users
-  has_many :movie_followings, dependent: :destroy
-  has_many :users, through: :movie_followings
-  has_many :rating_movies, dependent: :destroy
-  has_many :users, through: :rating_movies
-  has_many :user_movies, dependent: :destroy
-  has_many :users, through: :user_movies
+  has_many :movie_vocabularies, foreign_key: :dictionary_id,
+    class_name: Vocabulary.name, dependent: :destroy
+  has_many :vocabularies, through: :movie_vocabularies, source: :dictionary
+  has_many :movie_followers, foreign_key: :movie_id,
+    class_name: MovieFollowing.name, dependent: :destroy
+  has_many :followers, through: :movie_followers, source: :user
+  has_many :user_ratings, dependent: :destroy, foreign_key: :movie_id
+  has_many :ratings, through: :user_ratings, source: :user
+  has_many :user_watchings, dependent: :destroy, foreign_key: :movie_id
+  has_many :watchings, through: :user_watchings, source: :user
   has_many :comments, dependent: :destroy
+  has_and_belongs_to_many :genres
 
   scope :newest, ->{order created_at: :desc}
   scope :column_sort, ->(column){order "? DESC", column}
