@@ -57,3 +57,49 @@ en:
     newst: "Newest..."
     category: "By category..."
 
+  admin:
+    views:
+      layouts:
+        header:
+          app_name: "Flenglish"
+          profile: "Profile"
+          setting: "Setting"
+          logout: "Logout"
+          dashboard: "Dashboard"
+          movies: "Manage movies"
+          users: "Manage users"
+          comments: "Manage comments"
+          suggests: "Manage suggests"
+        footer:
+          info_footer: "Project 1 - Learn English through movies"
+      static_pages:
+        home:
+          dashboard: "Dashboard"
+        statistical:
+          count: "%{count}"
+          new: "New %{name}"
+          view: "View details"
+        chart:
+          list: "List by"
+          day: "Day"
+          month: "Month"
+          year: "Year"
+          movies: "Movies chart"
+          users: "Users chart"
+        movies:
+          thead:
+            top: "Top"
+            categories: "Categories"
+            genres: "Genres"
+            name: "Movie name"
+            views: "Total views"
+            rating: "Rating"
+        users:
+          thead:
+            top: "Top"
+            name: "Full name"
+            email: "Email"
+            gender: "Gender"
+            phone: "Phone"
+            comments: "Total comments"
+            suggests: "Total suggests"

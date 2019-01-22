@@ -1,0 +1,70 @@
+<!-- movies chart -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <i class="fa fa-bar-chart-o fa-fw"></i>
+      <%= t("admin.views.static_pages.chart.movies") %>
+    <div class="pull-right">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default btn-xs dropdown-toggle"
+          data-toggle="dropdown">
+          <%= t("admin.views.static_pages.chart.list") %>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right" role="menu">
+          <li>
+            <%= link_to t("admin.views.static_pages.chart.day"), "#" %>
+          </li>
+          <li>
+            <%= link_to t("admin.views.static_pages.chart.month"), "#" %>
+          </li>
+          <li>
+            <%= link_to t("admin.views.static_pages.chart.year"), "#" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <!-- /.panel-heading -->
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <%= render "admin/static_pages/movies" %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- users chart -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <i class="fa fa-bar-chart-o fa-fw"></i>
+      <%= t("admin.views.static_pages.chart.users") %>
+    <div class="pull-right">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default btn-xs dropdown-toggle"
+          data-toggle="dropdown">
+          <%= t("admin.views.static_pages.chart.list") %>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right" role="menu">
+          <li>
+            <%= link_to t("admin.views.static_pages.chart.day"), "#" %>
+          </li>
+          <li>
+            <%= link_to t("admin.views.static_pages.chart.month"), "#" %>
+          </li>
+          <li>
+            <%= link_to t("admin.views.static_pages.chart.year"), "#" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <!-- /.panel-heading -->
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <%= render "admin/static_pages/users" %>
+      </div>
+    </div>
+  </div>
+</div>
