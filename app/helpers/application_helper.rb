@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include DateHelper
+
   def full_title page_title
     base_title = I18n.t("app_name")
 
@@ -7,5 +9,9 @@ module ApplicationHelper
     else
       page_title + " | " + base_title
     end
+  end
+
+  def summary content, size
+    content.length <= size ? content : truncate(content, length: size)
   end
 end

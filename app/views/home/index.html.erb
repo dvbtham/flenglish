@@ -30,16 +30,14 @@
     <div class="row">
       <div class="col-md-9 movie-list">
         <div class="list-item">
-          <%= render "home/feature_movie" %>
+          <h3 class="section-header"><%= t "feature_movies" %></h3>
+          <div id="feature-movies">
+            <%= render partial: "feature_movie",
+              collection: @home.feature_movies, as: :movie %>
+          </div>
         </div>
-        <!-- movies by level 1 will goes here -->
-        <div class="list-item">
-          <%= render "home/feature_movie" %>
-        </div>
-        <!-- movies by level 2 will goes here -->
-        <div class="list-item">
-          <%= render "home/feature_movie" %>
-        </div>
+        <%= render partial: "level",
+          collection: @home.levels, as: :level %>
       </div>
       <div class="col-md-3 rightside">
         <h3 class="rightside-header">
