@@ -33,7 +33,8 @@
           <h3 class="section-header"><%= t "feature_movies" %></h3>
           <div id="feature-movies">
             <%= render partial: "feature_movie",
-              collection: @home.feature_movies, as: :movie %>
+              collection: @home.feature_movies,
+              locals: {collection: @home.feature_movies}, as: :movie %>
           </div>
         </div>
         <%= render partial: "level",
