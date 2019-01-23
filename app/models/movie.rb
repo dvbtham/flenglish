@@ -21,7 +21,7 @@ class Movie < ApplicationRecord
   has_and_belongs_to_many :genres
 
   scope :newest, ->{order created_at: :desc}
-  scope :column_sort, ->(column){order "? DESC", column}
+  scope :column_sort, ->(column){order "#{column} DESC"}
   scope :level, ->(level_id){where level_id: level_id}
   scope :genre, (lambda do |genre_id|
     joins(:genres).where("genres_movies.genre_id = ?", genre_id)
