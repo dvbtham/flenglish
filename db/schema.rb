@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_19_142910) do
+ActiveRecord::Schema.define(version: 2019_01_22_154255) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_142910) do
 
   create_table "episodes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "movie_id"
+    t.string "name"
     t.string "video_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_01_19_142910) do
     t.boolean "is_feature"
     t.float "rating"
     t.integer "views"
+    t.boolean "is_single", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -123,6 +125,14 @@ ActiveRecord::Schema.define(version: 2019_01_19_142910) do
     t.integer "user_id"
     t.integer "views"
     t.boolean "status"
+  end
+
+  create_table "user_vocabularies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movie_id"
+    t.integer "dictionary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

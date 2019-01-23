@@ -7,19 +7,33 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :suggests
   has_and_belongs_to_many :subtitles
-  # many to many relationship to favorites table
-  has_and_belongs_to_many :movies
-  has_many :movie_followings, dependent: :destroy
-  has_many :movies, through: :movie_followings
-  has_many :rating_movies, dependent: :destroy
-  has_many :movies, through: :rating_movies
+  has_many :favorited_movies, foreign_key: :user_id, class_name: Favorite.name,
+    dependent: :destroy
+  has_many :favoriting, through: :favorited_movies, source: :movie
+  has_many :movie_followings, foreign_key: :user_id,
+    class_name: MovieFollowing.name, dependent: :destroy
+  has_many :followed_movies, through: :movie_followings, source: :movie
+  has_many :rating_movies, dependent: :destroy, foreign_key: :user_id
+  has_many :rated_movies, through: :rating_movies, source: :movie
   has_many :comments, dependent: :destroy
-  # many to many relationship to user_movies table
-  has_many :user_movies, dependent: :destroy
-  has_many :movies, through: :user_movies
+  has_many :user_movies, dependent: :destroy, foreign_key: :user_id
+  has_many :watched_movies, through: :user_movies, source: :movie
+  has_many :movie_vocabularies, foreign_key: :user_id,
+    class_name: UserVocabulary.name, dependent: :destroy
+  has_many :vocabularies, through: :movie_vocabularies, source: :movie
 
   enum gender: %i(male female)
   enum role: %i(member admin)
 
   has_secure_password
+
+  # Follows a user.
+  def follow other_user
+    following << other_user
+  end
+
+  # Unfollows a user.
+  def unfollow other_user
+    following.delete other_user
+  end
 end
