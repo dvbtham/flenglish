@@ -1,0 +1,12 @@
+<li class="sub-item">
+  <div class="item-info">
+    <%= link_to subtitle.engsub, "#",
+      {"data-second": subtitle.subtitle_at, class: "sub-link"} %>
+    <p class="text-muted">
+      <%= subtitle.vietsub %>
+    </p>
+    <%= link_to "#" do %>
+      <i class="glyphicon glyphicon-heart save-sub"></i>
+    <% end %>
+  </div>
+</li>

@@ -1,9 +1,12 @@
 class MoviesController < ApplicationController
   before_action :load_genres_pairs, :load_levels_pairs, :load_categories_pairs,
     only: :search
-  before_action :load_movie, only: :show
+  before_action :load_movie, only: %i(show watch)
+  before_action :load_episode, only: :watch
 
-  def show; end
+  def show
+    @episode_id = @movie.episodes.any? ? @movie.episodes.first.id : 0
+  end
 
   def search
     search_params = params.slice :term, :level, :genre, :category, :column_sort
@@ -17,6 +20,10 @@ class MoviesController < ApplicationController
   def load_movies_to_json
     @movies = Movie.term params[:term]
     render json: @movies.select(:title_en, :title_vi)
+  end
+
+  def watch
+    @subtitles = @episode.subtitles
   end
 
   private
@@ -41,6 +48,13 @@ class MoviesController < ApplicationController
     @movie = Movie.find_by id: params[:id]
     return if @movie
     flash[:danger] = t "not_found.movie"
+    redirect_to page_404_path
+  end
+
+  def load_episode
+    @episode = @movie.episodes.find_by id: params[:episode]
+    return if @episode
+    flash[:danger] = t "not_found.episode"
     redirect_to page_404_path
   end
 end

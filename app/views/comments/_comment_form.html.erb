@@ -1,6 +1,14 @@
-<%= form_for(:comment) do |f| %>
-  <div class="form-group">
-    <%= f.text_area :content, class: "form-control flat" %>
-  </div>
-  <%= f.submit t(:send), class: "btn btn-primary flat" %>
-<% end %>
+<div class="comment-box">
+  <hr>
+  <h4><%= t :comment, count: comments.size %></h4>
+  <hr>
+  <%= form_for(:comment) do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, class: "form-control flat" %>
+    </div>
+    <%= f.submit t(:send), class: "btn btn-primary flat" %>
+  <% end %>
+  <ul class="comment-list">
+    <%= render partial: "comments/comment", collection: comments %>
+  </ul>
+</div>
