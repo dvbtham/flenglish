@@ -1,0 +1,14 @@
+<li class="comment-item">
+  <div class="image">
+    <%= link_to("#") do %>
+      <%= image_tag "/uploads/mv-1.jpg" %>
+    <% end %>
+  </div>
+  <div class="comment-info">
+    <h5><strong><%= comment.full_name %></strong></h5>
+    <p><%= comment.content %></p>
+    <div class="comment-date text-muted">
+      <%= l comment.created_at %>
+    </div>
+  </div>
+</li>

@@ -1,0 +1,6 @@
+<%= form_for(:comment) do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content, class: "form-control flat" %>
+  </div>
+  <%= f.submit t(:send), class: "btn btn-primary flat" %>
+<% end %>

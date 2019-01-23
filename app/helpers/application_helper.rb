@@ -14,4 +14,8 @@ module ApplicationHelper
   def summary content, size
     content.length <= size ? content : truncate(content, length: size)
   end
+
+  def active_episode episode_id, param
+    episode_id.to_s == param ? :info : :default
+  end
 end

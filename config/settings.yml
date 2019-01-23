@@ -8,3 +8,5 @@ home:
 summary:
   title_en: 20
   title_vi: 25
+error_status:
+  internal: 500
