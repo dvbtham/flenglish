@@ -29,16 +29,17 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-9 movie-list">
-        <div class="list-item">
+        <div class="row ml-0">
           <h3 class="section-header"><%= t "feature_movies" %></h3>
           <div id="feature-movies">
             <%= render partial: "feature_movie",
-              collection: @home.feature_movies,
-              locals: {collection: @home.feature_movies}, as: :movie %>
+              collection: @feature_movies, as: :movie %>
+          </div>
+          <div id="movie-paging">
+            <%= will_paginate @feature_movies %>
           </div>
         </div>
-        <%= render partial: "level",
-          collection: @home.levels, as: :level %>
+        <%= render partial: "level", collection: @levels, as: :level %>
       </div>
       <div class="col-md-3 rightside">
         <h3 class="rightside-header">

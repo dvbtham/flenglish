@@ -1,5 +1,5 @@
 $('#feature-movies')
   .html('<%= j render(partial: "feature_movie",\
-    collection: @home.feature_movies, as: :movie,\
-    locals: {collection: @home.feature_movies}) %>');
+    collection: @feature_movies, as: :movie) %>');
+$("#movie-paging").html('<%= will_paginate @feature_movies %>');
 $('.pagination a').attr('data-remote', 'true');
