@@ -1,9 +1,9 @@
-<div class="list-item">
+<div class="row ml-0">
   <h3 class="section-header">
     <%= t("movies_in_level") << level.name %>
-    <%= link_to t("view_all"), "#", class: "view-all" %>
+    <%= link_to t("view_all"), search_movies_path(level: level.id),
+      class: "view-all" %>
   </h3>
   <%= render partial: "home/feature_movie",
-    collection: level.movies.take(Settings.home.movies),
-    as: :movie, locals: {not_paginate: true} %>
+    collection: level.movies.take(Settings.home.movies), as: :movie %>
 </div>

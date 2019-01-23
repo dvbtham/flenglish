@@ -3,13 +3,13 @@
     <div class="row">
       <%= form_tag search_movies_path, method: :get, enforce_utf8: false,
         class: "navbar-form navbar-left", remote: true do %>
-        <div class="input-group ml-30 mt-20">
+        <div class="input-group ml-8 mt-20">
           <span class="input-group-btn">
             <%= select_tag(:level, options_for_select(@levels),
               include_blank: t("filter.level"),
-              class: "btn btn-default btn-sort") %>
+              class: "btn btn-default flat btn-sort") %>
             <%= select_tag(:column_sort, options_for_select(@sort_by),
-              include_blank: t("filter.newest"),
+              include_blank: t("filter.sort_by"),
               class: "btn btn-default btn-sort") %>
             <%= select_tag(:category, options_for_select(@categories),
               include_blank: t("filter.category"),
@@ -34,10 +34,12 @@
           <%= t("result", count: @movies.total_entries,
             term: params[:term]) unless params[:term].present? %>
         </h3>
-        <div class="row ml-15" id="movies">
+        <div class="row ml-0" id="movies">
           <%= render partial: "home/feature_movie",
-            collection: @movies, as: :movie,
-            locals: {collection: @movies} %>
+            collection: @movies, as: :movie %>
+        </div>
+        <div id="movie-paging">
+          <%= will_paginate @movies %>
         </div>
       </div>
       <div class="col-md-3 rightside">

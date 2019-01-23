@@ -33,7 +33,7 @@ User.create!(full_name: "Thâm Davies",
                activated_at: Time.zone.now)
 end
 
-10.times do |n|
+20.times do |n|
   image_slug = Faker::Lorem.word
   category_id = Faker::Number.between(1, 2)
   Movie.create!(title_en: Faker::Lorem.sentence,
