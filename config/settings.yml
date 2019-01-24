@@ -15,6 +15,7 @@ seed:
   max_age: 60
 home:
   movies: 8
+  users: 10
 summary:
   title_en: 20
   title_vi: 25

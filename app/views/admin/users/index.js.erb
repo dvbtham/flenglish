@@ -1,0 +1,3 @@
+$('#users').html('<%= j render @users %>');
+$('.pagination a').attr('data-remote', 'true');
+$('#users-paging').html('<%= will_paginate @users %>')

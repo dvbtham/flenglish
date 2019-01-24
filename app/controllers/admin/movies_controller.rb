@@ -4,8 +4,8 @@ class Admin::MoviesController < Admin::BaseController
   def index
     search_params = params.slice :term, :level, :genre, :category, :column_sort
     search_params.delete :column_sort unless column_valid? params[:column_sort]
-    @movies = Movie.filter(search_params).paginate(page: params[:page],
-      per_page: Settings.home.movies)
+    @movies = Movie.filter(search_params).paginate page: params[:page],
+      per_page: Settings.home.movies
     @sort_by = Movie.filterable_columns
     respond_to do |format|
       format.html
