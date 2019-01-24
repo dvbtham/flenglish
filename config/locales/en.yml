@@ -71,6 +71,12 @@ en:
   genre:
     single: "Single"
     series: "Series"
+  not_found:
+    movie: "The movie you're looking for cannot be found."
+    content: "Opps! The page you're entered could not be found."
+  time:
+    formats:
+      default: "%m/%d/%Y %p"
 
   admin:
     views:

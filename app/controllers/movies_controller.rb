@@ -1,14 +1,15 @@
 class MoviesController < ApplicationController
   before_action :load_genres_pairs, :load_levels_pairs, :load_categories_pairs,
     only: :search
+  before_action :load_movie, only: :show
 
   def show; end
 
   def search
     search_params = params.slice :term, :level, :genre, :category, :column_sort
     search_params.delete :column_sort unless column_valid? params[:column_sort]
-    @movies = Movie.filter(search_params).paginate(page: params[:page],
-      per_page: Settings.home.movies)
+    @movies = Movie.filter(search_params).paginate page: params[:page],
+      per_page: Settings.home.movies
     @sort_by = Movie.filterable_columns
   end
 
@@ -34,5 +35,12 @@ class MoviesController < ApplicationController
 
   def column_valid? param
     Movie.filterable_columns.flatten.include? param.to_sym if param.present?
+  end
+
+  def load_movie
+    @movie = Movie.find_by id: params[:id]
+    return if @movie
+    flash[:danger] = t "not_found.movie"
+    redirect_to page_404_path
   end
 end

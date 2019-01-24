@@ -307,6 +307,7 @@ footer {
 }
 
 .comment-list {
+  width: 100%;
   margin-top: 30px;
   list-style: none;
   display: inline-block;
@@ -314,6 +315,7 @@ footer {
 }
 
 .comment-item {
+  width: 100%;
   display: inline-block;
   margin-bottom: 10px;
   .image {
@@ -331,17 +333,17 @@ footer {
     width: calc(100% - 80px);
     padding-left: 10px;
     position: relative;
+    h5 {
+      margin-top: 0px;
+    }
+    .comment-date {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
   }
 }
 
-.comment-info h5 {
-  margin-top: 0px;
-}
-
-.comment-date {
-  position: absolute;
-  right: 0;
-}
 
 /* autocomplete */
 ul.ui-autocomplete {
@@ -372,6 +374,13 @@ ul.ui-autocomplete {
       }
     }
   }
+}
+
+/* error pages */
+.status-code {
+  color: $red;
+  font-weight: bold;
+  font-size: 35px;
 }
 
 #wrapper {
