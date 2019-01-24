@@ -20,6 +20,8 @@ class Movie < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :genres
 
+  delegate :name, to: :category, allow_nil: true, prefix: true
+
   scope :newest, ->{order created_at: :desc}
   scope :column_sort, ->(column){order "#{column} DESC"}
   scope :level, ->(level_id){where level_id: level_id}
@@ -36,5 +38,9 @@ class Movie < ApplicationRecord
     {is_feature: I18n.t("sort_column.feature"),
      views: I18n.t("sort_column.views"),
      created_at: I18n.t("sort_column.newest")}.map{|key, value| [value, key]}
+  end
+
+  def genre_names
+    genres.map(&:name).join ", "
   end
 end

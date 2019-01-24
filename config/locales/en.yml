@@ -95,7 +95,7 @@ en:
           info_footer: "Project 1 - Learn English through movies"
       static_pages:
         home:
-          dashboard: "Dashboard"
+          page_heading: "Dashboard"
         statistical:
           count: "%{count}"
           new: "New %{name}"
@@ -124,3 +124,21 @@ en:
             phone: "Phone"
             comments: "Total comments"
             suggests: "Total suggests"
+      movies:
+        page_heading: "Movies"
+        title: "Name"
+        cate: "Categories"
+        genres: "Genres"
+        episodes: "Episodes"
+        views: "Views"
+        rating: "Rating"
+        tool: "Tool"
+        not_found: "No movies found matching the above keywords"
+        filter_category: "By Category"
+        filter_level: "By Level"
+        filter_genre: "By Genre"
+        filter_sort: "Sort by"
+    submit:
+      movie:
+        search: "Search"
+        filter: "Filter"
