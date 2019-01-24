@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :follower_id, dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,
@@ -22,19 +26,15 @@ class User < ApplicationRecord
     class_name: UserVocabulary.name, dependent: :destroy
   has_many :vocabularies, through: :movie_vocabularies, source: :movie
 
-  enum gender: %i(male female)
-  enum role: %i(member admin)
+  validates :email, length: {maximum: Settings.user.email.max_length},
+    format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
+
+  validates :password, length: {minimum: Settings.user.password.min_length}
+
+  enum gender: {male: false, female: true}
+  enum role: %i(member administrator)
 
   has_secure_password
-
-  def self.digest string
-    cost = if ActiveModel::SecurePassword.min_cost
-             BCrypt::Engine::MIN_COST
-           else
-             BCrypt::Engine.cost
-           end
-    BCrypt::Password.create string, cost: cost
-  end
 
   # Follows a user.
   def follow other_user
@@ -44,5 +44,40 @@ class User < ApplicationRecord
   # Unfollows a user.
   def unfollow other_user
     following.delete other_user
+  end
+
+  # Forgets a user.
+  def forget
+    update_attribute :remember_digest, nil
+  end
+
+  # Remembers a user in the database for use in persistent sessions.
+  def remember
+    self.remember_token = User.new_token
+    update_attribute :remember_digest, User.digest(remember_token)
+  end
+
+  # Returns true if the given token matches the digest.
+  def authenticated? attribute, token
+    digest = send "#{attribute}_digest"
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  class << self
+    # Returns the hash digest of the given string.
+    def digest string
+      cost = if ActiveModel::SecurePassword.min_cost
+               BCrypt::Engine::MIN_COST
+             else
+               BCrypt::Engine.cost
+             end
+      BCrypt::Password.create string, cost: cost
+    end
+
+    # Returns a random token.
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
   end
 end

@@ -75,9 +75,22 @@ en:
     movie: "The movie you're looking for cannot be found."
     episode: "The episode you're looking for cannot be found."
     content: "Opps! The page you're entered could not be found."
+    user: "The user you're looking for cannot be found."
+  remember_me: "Remember me"
+
   time:
     formats:
       default: "%m/%d/%Y %p"
+  login: "Login"
+  register: "Register"
+  login_failed: "Invalid email or password. Please try again."
+  sessions:
+    new:
+      login: "Login"
+      signup_now: "Sign up now!"
+      is_new_user: "New user?"
+      email: "Email"
+      password: "Password"
 
   admin:
     views:

@@ -1,0 +1,32 @@
+<% provide :title, t("login") %>
+<div class="container" id="login">
+  <h3 class="text-center"><%= t(".login") %></h3>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= form_for :session, url: login_path do |f| %>
+        <%= render "shared/flash" %>
+        <div class="form-group">
+          <%= f.label t(".email") %>
+          <%= f.email_field :email, class: "form-control flat" %>
+        </div>
+        <div class="form-group">
+          <%= f.label t(".password") %>
+          <%= f.password_field :password, class: "form-control flat" %>
+        </div>
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <%= f.check_box :remember_me %> <%= t "remember_me" %>
+            </label>
+          </div>
+        </div>
+        <%= f.submit t("login"), name: nil, class: "btn flat btn-primary" %>
+        <span class="pull-right">
+          <%= t(".is_new_user") %>
+          <%= link_to t("register"), "#" %>
+        </span>
+      <% end %>
+
+    </div>
+  </div>
+</div>
