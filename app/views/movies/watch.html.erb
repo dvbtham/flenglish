@@ -32,12 +32,8 @@
             locals: {comments: @movie.comments} %>
         </div>
         <div class="col-md-4 rightside ml-0">
-          <h3 class="rightside-header"><%= t :subtitles %></h3>
-          <div class="aside-movies">
-            <ul class="subtitles">
-              <%= render partial: "movies/subtitle", collection: @subtitles %>
-            </ul>
-          </div>
+          <%= render partial: "movie_interact",
+            locals: {movie: @movie, subtitles: @subtitles} %>
         </div>
       </div>
     </div>

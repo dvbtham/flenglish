@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  include UsersHelper
+
   before_action :load_genres_pairs, :load_levels_pairs, :load_categories_pairs,
     only: :search
   before_action :load_movie, only: %i(show watch)

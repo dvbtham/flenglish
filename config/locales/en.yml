@@ -76,7 +76,17 @@ en:
     episode: "The episode you're looking for cannot be found."
     content: "Opps! The page you're entered could not be found."
     user: "The user you're looking for cannot be found."
+  not_have:
+    subtitles: "No subtitles at the current."
+    vocabularies: "No vocabularies at the current."
+  not_save:
+    subtitles: "No subtitles that you've saved."
+    vocabularies: "No vocabularies that you've saved."
   remember_me: "Remember me"
+  vocabularies: "Vocabularies"
+  interact_title: "Subtitles & Vocabularies"
+  subtitles: "Subtitles"
+  saved_vocabularies: "Saved vocabularies"
 
   time:
     formats:

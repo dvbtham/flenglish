@@ -1,0 +1,50 @@
+<h3 class="rightside-header">
+  <%= t :interact_title %>
+</h3>
+<div class="aside-movies">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <%= link_to t(:subtitles), "#subtitles", {"data-toggle": "tab"} %>
+    </li>
+    <li>
+      <%= link_to t(:vocabularies), "#vocabularies", {"data-toggle": "tab"} %>
+    </li>
+    <% if logged_in? %>
+      <li>
+        <%= link_to t(:saved_vocabularies), "#saved-vocabularies",
+          {"data-toggle": "tab"} %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="tab-content">
+    <div id="subtitles" class="tab-pane fade in active">
+      <ul class="subtitles">
+        <%= render partial: "movies/subtitle", collection: subtitles %>
+      </ul>
+    </div>
+    <div id="vocabularies" class="tab-pane fade in">
+      <ul class="subtitles">
+        <%= render partial: "movies/vocabulary",
+          collection: movie.vocabularies %>
+        <% unless movie.vocabularies.any? %>
+          <div class="text-danger mt-20">
+            <%= t "not_have.vocabularies" %>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+    <% if logged_in? %>
+      <div id="saved-vocabularies" class="tab-pane fade in">
+        <ul class="subtitles">
+          <%= render partial: "movies/vocabulary",
+            collection: current_user.vocabularies %>
+          <% unless has_vocabularies? %>
+            <div class="text-danger mt-20">
+              <%= t "not_save.vocabularies" %>
+            </div>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

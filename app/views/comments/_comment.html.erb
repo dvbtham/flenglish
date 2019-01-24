@@ -1,7 +1,7 @@
 <li class="comment-item">
   <div class="image">
     <%= link_to("#") do %>
-      <%= image_tag "/uploads/mv-1.jpg" %>
+      <%= gravatar_for comment.user %>
     <% end %>
   </div>
   <div class="comment-info">

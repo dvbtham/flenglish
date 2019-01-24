@@ -1,0 +1,12 @@
+<li class="sub-item">
+  <div class="item-info">
+    <%= link_to vocabulary.word_en, "#", class: "vocab-link" %>
+    <p class="text-muted">
+      <%= vocabulary.word_vi %>
+    </p>
+    <%= link_to "#" do %>
+      <i data-id="<%= vocabulary.id %>"
+        class="glyphicon glyphicon-heart save-item"></i>
+    <% end %>
+  </div>
+</li>

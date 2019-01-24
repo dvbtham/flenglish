@@ -7,7 +7,7 @@ class Movie < ApplicationRecord
     class_name: Favorite.name
   has_many :favoriters, through: :user_favorited, source: :user
   has_many :episodes
-  has_many :movie_vocabularies, foreign_key: :dictionary_id,
+  has_many :movie_vocabularies, foreign_key: :movie_id,
     class_name: Vocabulary.name, dependent: :destroy
   has_many :vocabularies, through: :movie_vocabularies, source: :dictionary
   has_many :movie_followers, foreign_key: :movie_id,

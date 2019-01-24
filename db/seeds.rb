@@ -25,12 +25,19 @@ User.create!(full_name: "Thâm Davies",
   password = "password"
   User.create!(full_name: name,
                email: email,
-               gender: Faker::Number.between(0, 1),
+               gender: Faker::Boolean.boolean,
                date_of_birth: Faker::Date.birthday(16, 60),
                password: password,
                password_confirmation: password,
                activated: true,
                activated_at: Time.zone.now)
+end
+
+# Dictionaries
+50.times do
+  Dictionary.create!(word_en: Faker::Lorem.word,
+                     word_vi: Faker::Lorem.word,
+                     pronounciation: Faker::Lorem.word)
 end
 
 20.times do |n|
@@ -49,7 +56,7 @@ end
                 views: Faker::Number.number(3))
 end
 
-# Seed data to genres_movies table
+# Seed relational movies table data
 movies = Movie.all
 movies.each do |movie|
   movie.genres << Genre.find_or_create_by(id: Faker::Number.between(1, 5))
@@ -57,6 +64,10 @@ movies.each do |movie|
   movie.total_episodes.times do |index|
     movie.episodes.create(name: "#{index + 1}",
       video_url: "https://www.youtube.com/embed/tLNOce4Y4uc")
+  end
+  Faker::Number.between(10, 20).times do
+    movie.movie_vocabularies
+      .build(dictionary_id: Faker::Number.between(1, 50)).save
   end
 end
 
@@ -77,3 +88,14 @@ following = users[3..8]
 followers = users[1..10]
 following.each {|followed| user.follow followed}
 followers.each {|follower| follower.follow user}
+
+# Save vocabularies
+users = User.all
+users.each do |user|
+  user.comments.create(movie_id: Faker::Number.between(1, 20),
+                       content: Faker::Lorem.sentence)
+  10.times do
+    user.movie_vocabularies.create(movie_id: Faker::Number.between(1, 2),
+                                   dictionary_id: Faker::Number.between(1, 50))
+  end
+end
