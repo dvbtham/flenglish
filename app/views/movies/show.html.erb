@@ -3,7 +3,8 @@
       <div class="row">
         <div class="col-md-3">
           <div class="play-box">
-            <%= link_to("#") do %>
+            <%= link_to(watch_movie_path(episode: @episode_id),
+              class: "video_url") do %>
               <%= image_tag @movie.image_url, class: "img-responsive" %>
             <% end %>
             <div class="overlay glyphicon glyphicon-play"></div>
@@ -34,16 +35,8 @@
               <%= @movie.description %>
             </div>
           </div>
-          <div class="comment-box">
-            <hr>
-            <h4><%= t :comment, count: @movie.comments.size %></h4>
-            <hr>
-            <%= render "comments/comment_form" %>
-            <ul class="comment-list">
-              <%= render partial: "comments/comment",
-                collection: @movie.comments %>
-            </ul>
-          </div>
+          <%= render partial: "comments/comment_form",
+            locals: {comments: @movie.comments} %>
         </div>
         <div class="col-md-3 rightside">
           <h3 class="rightside-header"><%= t :recommended_movies %></h3>

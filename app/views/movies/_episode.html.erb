@@ -1,2 +1,3 @@
 <%= link_to(episode.name, watch_movie_path(episode: episode.id),
-  class: "btn flat btn-#{active_episode episode.id, params[:episode]}") %>
+  class: "btn flat btn-#{active_episode episode.id, params[:episode]}",
+    "data-turbolinks": false) %>
