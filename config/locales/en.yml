@@ -91,6 +91,13 @@ en:
       is_new_user: "New user?"
       email: "Email"
       password: "Password"
+  date:
+    formats:
+      default: "%m/%d/%Y %p"
+  administrator: "Administrator"
+  member: "Member"
+  male: "Male"
+  female: "Female"
 
   admin:
     views:
@@ -152,7 +159,22 @@ en:
         filter_level: "By Level"
         filter_genre: "By Genre"
         filter_sort: "Sort by"
+      users:
+        page_heading: "Users"
+        name: "Full name"
+        male: "Male"
+        gender: "Gender"
+        dob: "Date of Birth"
+        role: "Role"
+        activation: "Activation date"
+        tool: "Tool"
+        not_found: "No users found matching the above keywords"
+        filter_role: "By Role"
+        filter_gender: "By Gender"
     submit:
       movie:
+        search: "Search"
+        filter: "Filter"
+      user:
         search: "Search"
         filter: "Filter"

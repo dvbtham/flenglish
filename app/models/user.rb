@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Filterable
+
   attr_accessor :remember_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -36,6 +38,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  scope :term, (lambda do |term|
+    where "email LIKE ? OR full_name LIKE ?", "%#{term}%", "%#{term}%"
+  end)
   # Follows a user.
   def follow other_user
     following << other_user
