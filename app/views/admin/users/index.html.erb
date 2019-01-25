@@ -19,11 +19,12 @@
         <div class="well well-sm">
           <%= form_tag admin_users_path, method: :get, id: "filter",
             class: "form-inline", enforce_utf8: false, remote: true do %>
-            <%= select_tag(:role, options_for_select(@users),
+            <%= select_tag(:role,
+              options_for_select(@roles),
               include_blank: t("admin.views.users.filter_role"),
               class: "btn btn-default") %>
             <%= select_tag(:gender,
-              options_for_select(@users),
+              options_for_select(@genders),
               include_blank: t("admin.views.users.filter_gender"),
               class: "btn btn-default") %>
             <%= submit_tag t("admin.submit.user.filter"), name: nil,

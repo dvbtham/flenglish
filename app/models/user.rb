@@ -38,6 +38,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  scope :role, ->(role_id){where role: role_id}
+  scope :gender, ->(gender_id){where gender: gender_id}
   scope :term, (lambda do |term|
     where "email LIKE ? OR full_name LIKE ?", "%#{term}%", "%#{term}%"
   end)
