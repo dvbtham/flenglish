@@ -219,20 +219,31 @@ $gray-dark: #DDD;
       width: calc(100% - 80px);
       float: left;
       padding-left: 10px;
-    }
-  }
-  .item-info {
-    h4 {
-      margin-top: 0px;
-      margin-bottom: 2px;
-      font-size: 14px;
-    }
-    p {
-      font-size: 13px;
+      h4 {
+        margin-top: 0px;
+        margin-bottom: 2px;
+        font-size: 14px;
+      }
+      p {
+        font-size: 13px;
+      }
     }
   }
   .item .image img {
     width: 100%;
+  }
+}
+
+.favorite-form {
+  width: 69px;
+  top: 0;
+  right: 0;
+  position: absolute !important;
+  height: 60px;
+  button {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
   }
 }
 
@@ -375,12 +386,6 @@ footer {
       padding-bottom: 2px;
       padding-top: 8px;
       position: relative;
-      .save-item {
-        position: absolute;
-        right: 7px;
-        top: 40%;
-        font-size: 20px;
-      }
     }
     &:last-child {
       border-bottom: none;

@@ -8,7 +8,7 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.full_name, class: "gravatar")
   end
 
-  def has_vocabularies?
-    current_user.vocabularies.any?
+  def has_vocabularies? movie_id
+    current_user.saved_vocabularies(movie_id).any?
   end
 end

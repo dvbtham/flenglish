@@ -4,6 +4,7 @@ en:
     by Tham and Nguyen Trung Tien"
   home: "Home"
   tips: "Tips"
+  please_login: "Please login to continue."
   search:
     name: "Search"
     basic: "Basic"
@@ -76,6 +77,7 @@ en:
     episode: "The episode you're looking for cannot be found."
     content: "Opps! The page you're entered could not be found."
     user: "The user you're looking for cannot be found."
+    vocabulary: "The vocabulary you're looking for cannot be found."
   not_have:
     subtitles: "No subtitles at the current."
     vocabularies: "No vocabularies at the current."
@@ -87,6 +89,24 @@ en:
   interact_title: "Subtitles & Vocabularies"
   subtitles: "Subtitles"
   saved_vocabularies: "Saved vocabularies"
+  saved_vocabulary: "Vocabulary added to favorite list"
+  create_failed:
+    vocabulary: "The vocabulary was unsuccessfully created"
+    comment: "The comment was unsuccessfully created"
+  create_success:
+    vocabulary: "The vocabulary was successfully created"
+    comment: "The comment was successfully created"
+  delete_failed:
+    vocabulary: "The vocabulary was unsuccessfully deleted"
+    comment: "The comment was unsuccessfully deleted"
+  delete_success:
+    vocabulary: "The vocabulary was successfully deleted"
+    comment: "The comment was successfully deleted"
+  tooltip:
+    favorite:
+      add: "Add to favorite"
+      remove: "Remove from favorite"
+
 
   time:
     formats:

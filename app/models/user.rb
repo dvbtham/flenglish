@@ -43,6 +43,7 @@ class User < ApplicationRecord
   scope :term, (lambda do |term|
     where "email LIKE ? OR full_name LIKE ?", "%#{term}%", "%#{term}%"
   end)
+
   # Follows a user.
   def follow other_user
     following << other_user
@@ -51,6 +52,10 @@ class User < ApplicationRecord
   # Unfollows a user.
   def unfollow other_user
     following.delete other_user
+  end
+
+  def saved_vocabularies movie_id
+    vocabularies.where "user_vocabularies.movie_id= ?", movie_id
   end
 
   # Forgets a user.
