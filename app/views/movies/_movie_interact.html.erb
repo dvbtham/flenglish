@@ -3,29 +3,34 @@
 </h3>
 <div class="aside-movies">
   <ul class="nav nav-tabs">
-    <li class="active">
+    <li class="<%= active_tab :tab1 %>">
       <%= link_to t(:subtitles), "#subtitles", {"data-toggle": "tab"} %>
     </li>
-    <li>
+    <li class="<%= active_tab :tab2 %>">
       <%= link_to t(:vocabularies), "#vocabularies", {"data-toggle": "tab"} %>
     </li>
     <% if logged_in? %>
-      <li>
-        <%= link_to t(:saved_vocabularies), "#saved-vocabularies",
-          {"data-toggle": "tab"} %>
+      <li class="<%= active_tab :tab3 %>">
+        <%= link_to "#saved-vocabularies", {"data-toggle": "tab"} do %>
+          <%= t(:saved_vocabularies) %>
+          <span class="badge">
+            <%= current_user.saved_vocabularies(movie.id).size %>
+          </span>
+        <% end %>
       </li>
     <% end %>
   </ul>
   <div class="tab-content">
-    <div id="subtitles" class="tab-pane fade in active">
+    <div id="subtitles" class="tab-pane fade in <%= active_tab :tab1 %>">
       <ul class="subtitles">
         <%= render partial: "movies/subtitle", collection: subtitles %>
       </ul>
     </div>
-    <div id="vocabularies" class="tab-pane fade in">
+    <div id="vocabularies" class="tab-pane fade in <%= active_tab :tab2 %>">
       <ul class="subtitles">
         <%= render partial: "movies/vocabulary",
-          collection: movie.vocabularies %>
+          collection: movie.vocabularies,
+          locals: {movie_id: movie.id, tab_name: :tab2} %>
         <% unless movie.vocabularies.any? %>
           <div class="text-danger mt-20">
             <%= t "not_have.vocabularies" %>
@@ -34,11 +39,13 @@
       </ul>
     </div>
     <% if logged_in? %>
-      <div id="saved-vocabularies" class="tab-pane fade in">
+      <div id="saved-vocabularies"
+        class="tab-pane fade in <%= active_tab :tab3 %>">
         <ul class="subtitles">
           <%= render partial: "movies/vocabulary",
-            collection: current_user.vocabularies %>
-          <% unless has_vocabularies? %>
+            collection: current_user.saved_vocabularies(movie.id),
+            locals: {movie_id: movie.id, tab_name: :tab3} %>
+          <% unless has_vocabularies? movie.id %>
             <div class="text-danger mt-20">
               <%= t "not_save.vocabularies" %>
             </div>

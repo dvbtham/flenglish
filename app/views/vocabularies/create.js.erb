@@ -1,0 +1,3 @@
+$('#flenglish-alert').html('<%= j render("shared/flash") %>')
+$('#movie-interact').html(`<%= j render(partial: "movies/movie_interact",
+  locals: {movie: @movie, subtitles: @episode.subtitles}) %>`);

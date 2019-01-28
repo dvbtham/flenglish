@@ -4,9 +4,28 @@
     <p class="text-muted">
       <%= vocabulary.word_vi %>
     </p>
-    <%= link_to "#" do %>
-      <i data-id="<%= vocabulary.id %>"
-        class="glyphicon glyphicon-heart save-item"></i>
+    <% unless not_in_favorite? movie_id, vocabulary.id %>
+      <%= form_tag vocabulary_path(movie_id), remote: true,
+        method: :delete, class: "favorite-form" do |f| %>
+        <%= hidden_field_tag :movie, movie_id %>
+        <%= hidden_field_tag :tab, tab_name %>
+        <%= hidden_field_tag :vocabulary, vocabulary.id %>
+        <%= hidden_field_tag :episode, params[:episode] %>
+        <%= button_tag name: nil, title: t("tooltip.favorite.remove") do %>
+          <i class="glyphicon glyphicon-heart text-danger"></i>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= form_tag vocabularies_path, remote: true,
+        method: :post, class: "favorite-form" do |f| %>
+        <%= hidden_field_tag :movie, movie_id %>
+        <%= hidden_field_tag :tab, tab_name %>
+        <%= hidden_field_tag :vocabulary, vocabulary.id %>
+        <%= hidden_field_tag :episode, params[:episode] %>
+        <%= button_tag name: nil, title: t("tooltip.favorite.add") do %>
+          <i class="glyphicon glyphicon-heart-empty"></i>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </li>

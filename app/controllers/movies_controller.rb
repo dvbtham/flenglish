@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   before_action :load_genres_pairs, :load_levels_pairs, :load_categories_pairs,
     only: :search
   before_action :load_movie, only: %i(show watch)
-  before_action :load_episode, only: :watch
+  before_action :load_episode, :logged_in_user, only: :watch
 
   def show
     @episode_id = @movie.episodes.any? ? @movie.episodes.first.id : 0
@@ -25,6 +25,7 @@ class MoviesController < ApplicationController
   end
 
   def watch
+    params[:tab] = Settings.tab.default if params[:tab].nil?
     @subtitles = @episode.subtitles
   end
 

@@ -4,7 +4,9 @@
         <div class="col-md-8 movie-detail mt-20 pl-30">
           <div class="heading">
             <div class="watch-box">
-              <%= render "shared/flash" %>
+              <div id="flenglish-alert">
+                <%= render "shared/flash" %>
+              </div>
               <iframe id="player"
                 src="<%= @episode.video_url %>?enablejsapi=1&html5=1"
                 frameborder="0" allowfullscreen
@@ -31,7 +33,7 @@
           <%= render partial: "comments/comment_form",
             locals: {comments: @movie.comments} %>
         </div>
-        <div class="col-md-4 rightside ml-0">
+        <div class="col-md-4 rightside ml-0" id="movie-interact">
           <%= render partial: "movie_interact",
             locals: {movie: @movie, subtitles: @subtitles} %>
         </div>

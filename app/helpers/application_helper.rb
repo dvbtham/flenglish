@@ -18,4 +18,8 @@ module ApplicationHelper
   def active_episode episode_id, param
     episode_id.to_s == param ? :info : :default
   end
+
+  def active_tab tab_name
+    return :active if params[:tab] == tab_name.to_s
+  end
 end
