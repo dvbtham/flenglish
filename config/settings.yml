@@ -25,3 +25,7 @@ admin:
   summary:
     movie:
       title: 40
+gender:
+  male_text: "false"
+  male: 0
+  female: 1
