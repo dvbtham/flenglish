@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
     @episode_id = @movie.episodes.any? ? @movie.episodes.first.id : 0
     respond_to do |format|
       format.html{render :show}
-      format.js{render file: "/app/views/shared/comment.js.erb"}
+      format.js{render file: Settings.shared.file.js.comment}
     end
   end
 
@@ -31,8 +31,13 @@ class MoviesController < ApplicationController
   end
 
   def watch
+    view_counter_cookie = "#{current_user.id}_#{@movie.id}"
     params[:tab] = Settings.tab.default if params[:tab].nil?
     @subtitles = @episode.subtitles
+    return if cookies[:view_counter] == view_counter_cookie
+    add_view_counter @movie
+    cookies[:view_counter] = {value: view_counter_cookie,
+                              expires: Time.now + Settings.view_counter.hours}
   end
 
   private
@@ -65,5 +70,22 @@ class MoviesController < ApplicationController
     return if @episode
     flash[:danger] = t "not_found.episode"
     redirect_to page_404_path
+  end
+
+  def add_view_counter movie
+    user_movie = UserMovie.find_by user_id: current_user.id, movie_id: movie.id
+    UserMovie.transaction do
+      if user_movie
+        user_movie.views = user_movie.views + Settings.step.one
+        user_movie.save!
+      else
+        user_movie = UserMovie.create!(user_id: current_user.id,
+          movie_id: movie.id, views: Settings.default_views)
+      end
+      movie.update_attribute :views, user_movie.views
+    end
+  rescue ActiveRecord::RecordNotSaved
+    flash.now[:danger] = t :save_error
+    render :watch
   end
 end

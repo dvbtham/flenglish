@@ -6,12 +6,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new comment_params
     if @comment.save
       flash.now[:success] = t "create_success.comment"
-      comment_success_respond @movie
+      comment_success_respond
     else
       flash.now[:danger] = populate_error_message @comment
       respond_to do |format|
-        format.html{render "movies/show"}
-        format.js{render file: "/app/views/shared/comment.js.erb"}
+        format.js{render file: Settings.shared.file.js.comment}
       end
     end
   end
@@ -19,7 +18,7 @@ class CommentsController < ApplicationController
   def destroy
     if @comment.destroy
       flash.now[:success] = t "delete_success.comment"
-      comment_success_respond @comment
+      comment_success_respond
     else
       flash[:danger] = t "delete_failed.comment"
       redirect_to page_500_path
@@ -29,7 +28,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:user_id, :movie_id, :content)
+    params.require(:comment).permit :user_id, :movie_id, :content
   end
 
   def load_movie
@@ -59,10 +58,9 @@ class CommentsController < ApplicationController
     comment.errors.messages.values.flatten.map(&:to_s).join "<br/>"
   end
 
-  def comment_success_respond movie
+  def comment_success_respond
     respond_to do |format|
-      format.html{redirect_to movie_path movie}
-      format.js{render file: "/app/views/shared/comment.js.erb"}
+      format.js{render file: Settings.shared.file.js.comment}
     end
   end
 end

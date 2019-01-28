@@ -9,7 +9,7 @@
       <%= f.hidden_field :movie_id, value: movie_id %>
       <%= f.text_area :content, class: "form-control flat" %>
     </div>
-    <%= f.submit t(:send), class: "btn btn-primary flat", data: {params: "ahihi=1"} %>
+    <%= f.submit t(:send), class: "btn btn-primary flat" %>
   <% end %>
   <ul class="comment-list">
     <%= render partial: "comments/comment", collection: comments,

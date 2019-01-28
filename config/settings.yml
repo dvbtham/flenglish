@@ -38,3 +38,14 @@ tab:
   default: "tab1"
 per_page:
   comments: 10
+role:
+  admin: "administrator"
+  member: "member"
+shared:
+  file:
+    js:
+      comment: "/app/views/shared/comment.js.erb"
+default_views: 1
+step:
+  one: 1
+view_counter: 3

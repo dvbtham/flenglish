@@ -6,17 +6,11 @@ class VocabulariesController < ApplicationController
   before_action :load_vocabulary, only: :destroy
 
   def create
-    vocabulary = current_user.movie_vocabularies
-      .new movie_id: params[:movie], dictionary_id: params[:vocabulary]
-    flash.now[:success] = t :saved_vocabulary
+    vocabulary = current_user.movie_vocabularies.new(movie_id: params[:movie],
+     dictionary_id: params[:vocabulary])
     if vocabulary.save
-      respond_to do |format|
-        format.html do
-          redirect_to watch_movie_path @movie,
-            episode: @episode, tab: params[:tab]
-        end
-        format.js
-      end
+      flash.now[:success] = t :saved_vocabulary
+      respond_with_tab @movie, @episode
     else
       flash[:danger] = t "create_failed.vocabulary"
       redirect_to watch_movie_path @movie, episode: @episode
@@ -26,13 +20,7 @@ class VocabulariesController < ApplicationController
   def destroy
     @vocabulary.destroy
     flash.now[:success] = t "delete_success.vocabulary"
-    respond_to do |format|
-      format.html do
-        redirect_to watch_movie_path @movie,
-          episode: @episode, tab: params[:tab]
-      end
-      format.js
-    end
+    respond_with_tab @movie, @episode
   rescue StandardError
     flash[:danger] = t "delete_failed.vocabulary"
     redirect_to watch_movie_path @movie, episode: @episode
@@ -55,10 +43,20 @@ class VocabulariesController < ApplicationController
   end
 
   def load_vocabulary
-    @vocabulary = current_user.movie_vocabularies
-      .find_by movie_id: params[:movie], dictionary_id: params[:vocabulary]
+    @vocabulary = current_user.find_vocabulary params[:movie],
+      params[:vocabulary]
     return if @vocabulary
     flash[:danger] = t "not_found.vocabulary"
     redirect_to page_404_path
+  end
+
+  def respond_with_tab movie, episode
+    respond_to do |format|
+      format.html do
+        redirect_to watch_movie_path movie, episode: episode,
+          tab: params[:tab]
+      end
+      format.js
+    end
   end
 end
