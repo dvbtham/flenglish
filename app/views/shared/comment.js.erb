@@ -1,0 +1,6 @@
+$('#flenglish-alert').html('<%= j render("shared/flash") %>');
+$('.comment-list').html('<%= j render(partial: "comments/comment",\
+  collection: @comments, locals: {movie_id: @movie.id}) %>');
+$('#comment-count').html('<%= t :comment, count: @comments.total_entries %>');
+$('#comment-paging').html('<%= will_paginate @comments %>');
+$('.pagination a').attr('data-remote', 'true');

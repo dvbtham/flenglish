@@ -6,6 +6,8 @@ user:
   password:
     min_length: 6
     max_length: 50
+comment:
+  max_content: 255
 remember_me:
   checked: "1"
 seed:
@@ -32,3 +34,7 @@ gender:
 gravatar:
   size:
     user: 80
+tab:
+  default: "tab1"
+per_page:
+  comments: 10

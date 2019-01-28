@@ -7,7 +7,13 @@ class MoviesController < ApplicationController
   before_action :load_episode, :logged_in_user, only: :watch
 
   def show
+    @comment = Comment.new if logged_in?
+    @comments = @movie.comments_with_pagination params[:page]
     @episode_id = @movie.episodes.any? ? @movie.episodes.first.id : 0
+    respond_to do |format|
+      format.html{render :show}
+      format.js{render file: "/app/views/shared/comment.js.erb"}
+    end
   end
 
   def search

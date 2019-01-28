@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :movies
   end
 
-  resources :vocabularies, only: %i(create destroy)
+  resources :vocabularies, :comments, only: %i(create destroy)
 
   %w(404 422 500 503).each do |code|
     match code, to: "errors#show", code: code, as: "page_" << code, via: :all

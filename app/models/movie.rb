@@ -43,4 +43,8 @@ class Movie < ApplicationRecord
   def genre_names
     genres.map(&:name).join ", "
   end
+
+  def comments_with_pagination page
+    comments.recent.paginate page: page, per_page: Settings.per_page.comments
+  end
 end
