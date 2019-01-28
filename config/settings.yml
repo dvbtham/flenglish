@@ -29,3 +29,6 @@ gender:
   male_text: "false"
   male: 0
   female: 1
+gravatar:
+  size:
+    user: 80

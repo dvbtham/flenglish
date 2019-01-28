@@ -26,7 +26,7 @@ class User < ApplicationRecord
   has_many :watched_movies, through: :user_movies, source: :movie
   has_many :movie_vocabularies, foreign_key: :user_id,
     class_name: UserVocabulary.name, dependent: :destroy
-  has_many :vocabularies, through: :movie_vocabularies, source: :movie
+  has_many :vocabularies, through: :movie_vocabularies, source: :dictionary
 
   validates :email, length: {maximum: Settings.user.email.max_length},
     format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}

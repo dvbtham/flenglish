@@ -333,8 +333,8 @@ footer {
   .image {
     float: left;
     float: left;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     img {
       width: 100%;
       height: 100%;
@@ -366,6 +366,7 @@ footer {
   }
 }
 .subtitles {
+  min-height: 500px;
   max-height: 500px;
   overflow-y: scroll;
   .sub-item {
@@ -374,7 +375,7 @@ footer {
       padding-bottom: 2px;
       padding-top: 8px;
       position: relative;
-      .save-sub {
+      .save-item {
         position: absolute;
         right: 7px;
         top: 40%;
