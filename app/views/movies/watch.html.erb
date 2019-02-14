@@ -15,8 +15,7 @@
               </iframe>
             </div>
             <h4>
-              <%= link_to @movie.title_en, movie_path(@movie.id),
-                "data-turbolinks": false %>
+              <%= link_to @movie.title_en, movie_path(@movie.id) %>
             </h4>
             <p><%= @movie.title_vi %></p>
             <hr>
@@ -30,8 +29,6 @@
               <%= @movie.description %>
             </div>
           </div>
-          <%= render partial: "comments/comment_form",
-            locals: {comments: @movie.comments} %>
         </div>
         <div class="col-md-4 rightside ml-0" id="movie-interact">
           <%= render partial: "movie_interact",

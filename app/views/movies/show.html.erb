@@ -35,8 +35,10 @@
               <%= @movie.description %>
             </div>
           </div>
-          <%= render partial: "comments/comment_form",
-            locals: {comments: @movie.comments} %>
+          <% if logged_in? %>
+            <%= render partial: "comments/comment_form",
+              locals: {comments: @comments, movie_id: @movie.id} %>
+          <% end %>
         </div>
         <div class="col-md-3 rightside">
           <h3 class="rightside-header"><%= t :recommended_movies %></h3>

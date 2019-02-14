@@ -1,14 +1,21 @@
 <div class="comment-box">
   <hr>
-  <h4><%= t :comment, count: comments.size %></h4>
+  <h4 id="comment-count"><%= t :comment, count: comments.total_entries %></h4>
   <hr>
-  <%= form_for(:comment) do |f| %>
+  <%= form_for @comment, remote: true do |f| %>
+    <div id="flenglish-alert"></div>
     <div class="form-group">
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :movie_id, value: movie_id %>
       <%= f.text_area :content, class: "form-control flat" %>
     </div>
-    <%= f.submit t(:send), class: "btn btn-primary flat" %>
+    <%= f.submit t(:send), class: "btn btn-primary flat", data: {params: "ahihi=1"} %>
   <% end %>
   <ul class="comment-list">
-    <%= render partial: "comments/comment", collection: comments %>
+    <%= render partial: "comments/comment", collection: comments,
+      locals: {movie_id: movie_id} %>
   </ul>
+  <div id="comment-paging">
+    <%= will_paginate comments %>
+  </div>
 </div>

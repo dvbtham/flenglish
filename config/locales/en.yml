@@ -78,6 +78,7 @@ en:
     content: "Opps! The page you're entered could not be found."
     user: "The user you're looking for cannot be found."
     vocabulary: "The vocabulary you're looking for cannot be found."
+    comment: "The comment you're looking for cannot be found."
   not_have:
     subtitles: "No subtitles at the current."
     vocabularies: "No vocabularies at the current."
@@ -128,6 +129,24 @@ en:
   member: "Member"
   male: "Male"
   female: "Female"
+  sure_to_delete: "Are you sure to delete this item?"
+  delete: "Delete"
+
+  activerecord:
+    models:
+      comment:
+        one: "Comment"
+        other: "Comments"
+    attributes:
+      comment:
+        content: "Content"
+    errors:
+      models:
+        comment:
+          attributes:
+            content:
+              blank: "%{attribute} can't be blank"
+
   admin:
     views:
       layouts:
