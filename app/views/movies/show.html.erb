@@ -5,7 +5,7 @@
           <div class="play-box">
             <%= link_to(watch_movie_path(episode: @episode_id),
               class: "video_url") do %>
-              <%= image_tag @movie.image_url, class: "img-responsive" %>
+              <%= image_tag @movie.image, class: "img-responsive" %>
             <% end %>
             <div class="overlay glyphicon glyphicon-play"></div>
           </div>
