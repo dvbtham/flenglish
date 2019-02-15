@@ -49,3 +49,7 @@ default_views: 1
 step:
   one: 1
 view_counter: 3
+text_area_size: 8
+continue: "continue"
+no_image: "/uploads/no-image.jpg"
+picture_size: 5

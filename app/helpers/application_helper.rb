@@ -31,4 +31,9 @@ module ApplicationHelper
     form.select name, source, {include_blank: prompt},
       {class: "form-control", multiple: true}
   end
+
+  def multiple_select2 form, name, source, prompt
+    form.select name, source, {include_blank: prompt},
+      {class: "form-control select2-multiple", multiple: true}
+  end
 end

@@ -103,9 +103,11 @@ en:
   delete_failed:
     vocabulary: "The vocabulary was unsuccessfully deleted"
     comment: "The comment was unsuccessfully deleted"
+    movie: "The movie was unsuccessfully deleted"
   delete_success:
     vocabulary: "The vocabulary was successfully deleted"
     comment: "The comment was successfully deleted"
+    movie: "The movie was successfully deleted"
   update_success:
     vocabulary: "The vocabulary was successfully updated"
     comment: "The comment was successfully updated"
@@ -117,6 +119,12 @@ en:
 
   add_favorite: "Add to favorite"
   follow: "Follow"
+  save: "Save"
+  close: "Close"
+  title:
+    edit:
+      movie: "Edit movie"
+      vocabulary: "Edit vocabulary"
 
   time:
     formats:
@@ -258,3 +266,4 @@ en:
       level: "-- Select level --"
       genre: "-- Select genres --"
       episode: "Select episode to view subtitles"
+      vocabulary: "-- Select vocabularies --"
