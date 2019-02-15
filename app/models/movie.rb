@@ -13,9 +13,11 @@ class Movie < ApplicationRecord
   has_many :movie_followers, foreign_key: :movie_id,
     class_name: MovieFollowing.name, dependent: :destroy
   has_many :followers, through: :movie_followers, source: :user
-  has_many :user_ratings, dependent: :destroy, foreign_key: :movie_id
+  has_many :user_ratings, dependent: :destroy, class_name: RatingMovie.name,
+    foreign_key: :movie_id
   has_many :ratings, through: :user_ratings, source: :user
-  has_many :user_watchings, dependent: :destroy, foreign_key: :movie_id
+  has_many :user_watchings, dependent: :destroy, class_name: UserMovie.name,
+    foreign_key: :movie_id
   has_many :watchings, through: :user_watchings, source: :user
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :genres
@@ -35,6 +37,17 @@ class Movie < ApplicationRecord
     where "title_en LIKE ? OR title_vi LIKE ?", "%#{term}%", "%#{term}%"
   end)
 
+  validates :title_en, :title_vi, :description, presence: true
+  validate  :picture_size
+  mount_uploader :image_url, PictureUploader
+
+  def picture_size
+    if image_url.size > Settings.picture_size.megabytes
+      errors.add :image_url,
+        t("incorrect_picture_size", max_size: Settings.picture_size)
+    end
+  end
+
   def self.filterable_columns
     {is_feature: I18n.t("sort_column.feature"),
      views: I18n.t("sort_column.views"),
@@ -47,5 +60,10 @@ class Movie < ApplicationRecord
 
   def comments_with_pagination page
     comments.recent.paginate page: page, per_page: Settings.per_page.comments
+  end
+
+  def image
+    return Settings.no_image unless image_url?
+    image_url.url
   end
 end

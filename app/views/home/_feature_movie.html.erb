@@ -1,6 +1,6 @@
 <div class="col-md-3">
   <div class="movie-item">
-    <%= image_tag movie.image_url, class: "img-responsive" %>
+    <%= image_tag movie.image, class: "img-responsive" %>
     <%= link_to(movie_path(id: movie.id), class: "movie-title") do %>
       <%= summary movie.title_en, Settings.summary.title_en %>
     <% end %>

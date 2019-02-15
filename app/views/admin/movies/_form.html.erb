@@ -1,0 +1,100 @@
+<div class="row">
+  <%= render "shared/error_messages", object: @movie %>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= f.label :title_en %>
+      <%= f.text_field :title_en, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :title_vi %>
+      <%= f.text_field :title_vi, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control",
+        rows: Settings.text_area_size %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image_url %>
+      <%= f.file_field :image_url, class: "form-control" %>
+      <%= image_tag @movie.image, class: "mt-8" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :category_id %>
+      <%= single_select f, :category_id, @categories,
+        t("admin.select.category") %>
+    </div>
+    <div class="form-group">
+      <%= f.label :genre_ids %>
+      <%= multiple_select f, :genre_ids, @genres,
+        t("admin.select.genre") %>
+    </div>
+    <div class="form-group">
+      <%= f.label :level_id %>
+      <%= single_select f, :level_id, @levels,
+        t("admin.select.level") %>
+    </div>
+    <div class="form-group">
+      <%= f.label :total_episodes %>
+      <%= f.number_field :total_episodes, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :views %>
+      <%= f.number_field :views, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :rating %>
+      <%= f.number_field :rating, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :is_feature %> <%= t "is_feature" %>
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :is_single %> <%= t "is_single" %>
+        </label>
+      </div>
+    </div>
+    <%= f.button t("save_changes"), value: :continue,
+      class: "btn flat btn-success" %>
+    <%= f.button t("save_exit"),
+      class: "btn flat btn-primary" %>
+    <%= link_to t("back"), admin_movies_path, class: "btn btn-info flat" %>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= t "episodes" %></div>
+      <div class="panel-body">
+        <div id="episodes">
+          <%= render partial: "admin/movies/episode",
+            collection: @movie.episodes, as: :episode,
+              locals: {movie: @movie} %>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= t "subtitles" %></div>
+      <div class="panel-body">
+        <div id="subtitles">
+          <div class="alert alert-warning">
+            <%= t "admin.select.episode" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= t "vocabularies" %></div>
+      <div class="panel-body">
+        <%= render partial: "admin/movies/vocabulary",
+          collection: @movie.vocabularies %>
+      </div>
+    </div>
+  </div>
+</div>

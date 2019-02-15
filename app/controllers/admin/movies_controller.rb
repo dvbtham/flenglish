@@ -1,5 +1,5 @@
 class Admin::MoviesController < Admin::BaseController
-  before_action :load_options_pairs, only: %i(index edit)
+  before_action :load_options_pairs, expect: :destroy
   before_action :load_movie, only: %i(edit update)
 
   def index
@@ -14,16 +14,40 @@ class Admin::MoviesController < Admin::BaseController
     end
   end
 
+  def new
+    @movie = Movie.new
+  end
+
+  def create
+    Movie.transaction do
+      @movie = Movie.new movie_params
+    end
+    if @movie.save
+      flash[:success] = t "create_success.movie"
+      redirect_to_condition = params[:button] == Settings.continue
+      redirect_to edit_admin_movie_path @movie if redirect_to_condition
+      redirect_to admin_movies_path unless redirect_to_condition
+    else
+      render :new
+    end
+  rescue ActiveRecord::RecordNotSaved
+    flash.now[:danger] = t :save_error
+    render :edit
+  end
+
   def edit; end
 
   def update
     Movie.transaction do
-      @movie.update_attributes! movie_params
+      if @movie.update_attributes movie_params
+        flash[:success] = t "update_success.movie"
+        redirect_to_condition = params[:button] == Settings.continue
+        redirect_to edit_admin_movie_path @movie if redirect_to_condition
+        redirect_to admin_movies_path unless redirect_to_condition
+      else
+        render :edit
+      end
     end
-    flash[:success] = t "update_success.movie"
-    redirect_to_condition = params[:button] == Settings.continue
-    redirect_to edit_admin_movie_path @movie if redirect_to_condition
-    redirect_to admin_movies_path unless redirect_to_condition
   rescue ActiveRecord::RecordNotSaved
     flash.now[:danger] = t :save_error
     render :edit

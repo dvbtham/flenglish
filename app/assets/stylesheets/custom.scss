@@ -439,3 +439,7 @@ ul.ui-autocomplete {
 #login {
   padding: 80px 0px 80px 0px;
 }
+
+#error_explanation ul li {
+  color: $red;
+}
