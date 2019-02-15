@@ -5,6 +5,7 @@ en:
   home: "Home"
   tips: "Tips"
   please_login: "Please login to continue."
+  unaccessable: "You cannot access this page. Please login as administrator."
   search:
     name: "Search"
     basic: "Basic"
@@ -108,8 +109,13 @@ en:
       add: "Add to favorite"
       remove: "Remove from favorite"
 
+  add_favorite: "Add to favorite"
+  follow: "Follow"
 
   time:
+    formats:
+      default: "%m/%d/%Y %p"
+  date:
     formats:
       default: "%m/%d/%Y %p"
   login: "Login"
@@ -122,15 +128,14 @@ en:
       is_new_user: "New user?"
       email: "Email"
       password: "Password"
-  date:
-    formats:
-      default: "%m/%d/%Y %p"
+
   administrator: "Administrator"
   member: "Member"
   male: "Male"
   female: "Female"
   sure_to_delete: "Are you sure to delete this item?"
   delete: "Delete"
+  save_error: "Unable to save data."
 
   activerecord:
     models:

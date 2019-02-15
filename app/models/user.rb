@@ -76,6 +76,10 @@ class User < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
 
+  def find_vocabulary movie_id, dictionary_id
+    movie_vocabularies.find_by movie_id: movie_id, dictionary_id: dictionary_id
+  end
+
   class << self
     # Returns the hash digest of the given string.
     def digest string
