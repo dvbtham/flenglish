@@ -21,6 +21,7 @@ class Movie < ApplicationRecord
   has_and_belongs_to_many :genres
 
   delegate :name, to: :category, allow_nil: true, prefix: true
+  accepts_nested_attributes_for :genres
 
   scope :newest, ->{order created_at: :desc}
   scope :column_sort, ->(column){order "#{column} DESC"}

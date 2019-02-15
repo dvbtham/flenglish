@@ -1,0 +1,3 @@
+<%= link_to(episode.name, subtitles_admin_movie_path(movie), remote: true,
+  class: "btn flat btn-default mt-8 movie-episode", method: :post,
+  data: {params: "episode=#{episode.id}"}) %>

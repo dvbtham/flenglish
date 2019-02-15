@@ -1,10 +1,23 @@
 <tr>
   <td class="td-movie"><%= image_tag movie.image_url %></td>
-  <td><%= summary movie.title_en, Settings.admin.summary.movie.title %></td>
+  <td>
+    <%= summary movie.title_en, Settings.admin.summary.movie.title %>
+    <br>
+    <small>
+      <%= summary movie.title_vi, Settings.admin.summary.movie.title %>
+    </small>
+  </td>
   <td><%= movie.category_name %></td>
   <td><%= movie.genre_names %></td>
   <td><%= movie.total_episodes %></td>
   <td><%= movie.views %></td>
   <td><%= movie.rating %></td>
-  <td><%= %></td>
+  <td>
+    <%= link_to edit_admin_movie_path(movie), title: t("edit") do %>
+      <i class="glyphicon glyphicon-edit"></i>
+    <% end %>
+    <%= link_to "#", title: t("delete") do %>
+      <i class="glyphicon glyphicon-remove text-danger"></i>
+    <% end %>
+  </td>
 </tr>

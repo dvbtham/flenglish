@@ -90,6 +90,7 @@ en:
   vocabularies: "Vocabularies"
   interact_title: "Subtitles & Vocabularies"
   subtitles: "Subtitles"
+  episodes: "Episodes"
   saved_vocabularies: "Saved vocabularies"
   saved_vocabulary: "Vocabulary added to favorite list"
   create_failed:
@@ -104,6 +105,10 @@ en:
   delete_success:
     vocabulary: "The vocabulary was successfully deleted"
     comment: "The comment was successfully deleted"
+  update_success:
+    vocabulary: "The vocabulary was successfully updated"
+    comment: "The comment was successfully updated"
+    movie: "The movie was successfully updated"
   tooltip:
     favorite:
       add: "Add to favorite"
@@ -135,7 +140,13 @@ en:
   female: "Female"
   sure_to_delete: "Are you sure to delete this item?"
   delete: "Delete"
+  edit: "Edit"
   save_error: "Unable to save data."
+  action: "Action"
+  is_single: "Is single?"
+  is_feature: "Is feature?"
+  save_changes: "Save changes"
+  save_exit: "Save and exit"
 
   activerecord:
     models:
@@ -145,6 +156,9 @@ en:
     attributes:
       comment:
         content: "Content"
+      movie:
+        title_en: "English title"
+        title_vi: "Vietnamese title"
     errors:
       models:
         comment:
@@ -231,3 +245,8 @@ en:
       user:
         search: "Search"
         filter: "Filter"
+    select:
+      category: "-- Select category --"
+      level: "-- Select level --"
+      genre: "-- Select genres --"
+      episode: "Select episode to view subtitles"

@@ -38,10 +38,7 @@
             <%= hidden_field_tag :term, params[:term] %>
           <% end %>
         </div>
-        <% flash.each do |message_type, message| %>
-          <%= content_tag(:div, message,
-            class: "alert alert-#{message_type}") %>
-        <% end %>
+        <div><%= render "shared/flash" %></div>
         <!-- table movies -->
         <% if @movies.blank? %>
           <div class="alert alert-danger">
@@ -59,7 +56,7 @@
                   <th><%= t("admin.views.movies.episodes") %></th>
                   <th><%= t("admin.views.movies.views") %></th>
                   <th><%= t("admin.views.movies.rating") %></th>
-                  <th><%= t("admin.views.movies.tool") %></th>
+                  <th><%= t("action") %></th>
                 </tr>
               </thead>
               <tbody id="movies">
