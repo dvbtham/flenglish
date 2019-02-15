@@ -1,6 +1,7 @@
 class Admin::MoviesController < Admin::BaseController
-  before_action :load_options_pairs, expect: :destroy
-  before_action :load_movie, only: %i(edit update)
+  before_action :load_options_pairs, :load_dictionaries_pair,
+    expect: %i(index destroy)
+  before_action :load_movie, only: %i(edit update destroy)
 
   def index
     search_params = params.slice :term, :level, :genre, :category, :column_sort
@@ -20,8 +21,9 @@ class Admin::MoviesController < Admin::BaseController
 
   def create
     Movie.transaction do
-      @movie = Movie.new movie_params
+      @movie = Movie.new movie_params.except :vocabulary_ids
       if @movie.save
+        @movie.update_attributes! movie_params
         flash[:success] = t "create_success.movie"
         redirect_to_condition = params[:button] == Settings.continue
         redirect_to edit_admin_movie_path @movie if redirect_to_condition
@@ -53,6 +55,15 @@ class Admin::MoviesController < Admin::BaseController
     render :edit
   end
 
+  def destroy
+    @movie.destroy!
+    flash[:success] = t "delete_success.movie"
+    redirect_to admin_movies_path
+  rescue Exception
+    flash[:danger] = t "delete_failed.movie"
+    redirect_to admin_movies_path
+  end
+
   def load_subtitles
     @subtitles = Subtitle.load_subtitles params[:episode]
     respond_to do |format|
@@ -65,7 +76,8 @@ class Admin::MoviesController < Admin::BaseController
   def movie_params
     params.require(:movie).permit :title_en, :title_vi, :description,
       :image_url, :category_id, :level_id, :total_episodes, :is_feature,
-      :views, :is_single, :rating, genre_ids: Array.new
+      :views, :is_single, :rating, genre_ids: Array.new,
+      vocabulary_ids: Array.new
   end
 
   def load_movie
@@ -79,6 +91,10 @@ class Admin::MoviesController < Admin::BaseController
     @genres = Genre.key_value_pairs
     @levels = Level.key_value_pairs
     @categories = Category.key_value_pairs
+  end
+
+  def load_dictionaries_pair
+    @dictionaries = Dictionary.key_value_pairs
   end
 
   def column_valid? param

@@ -19,5 +19,9 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
+  $('.select2-multiple').select2();
   new app.Movies;
+  setTimeout(function (){
+    $('div.alert').fadeOut();
+  }, 5000);
 })
