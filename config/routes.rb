@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :users
     resources :movies do
       member{post :subtitles, to: "movies#load_subtitles"}
+    resources :episodes
+    resources :subtitles
     end
   end
 

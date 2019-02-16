@@ -125,6 +125,11 @@ en:
     edit:
       movie: "Edit movie"
       vocabulary: "Edit vocabulary"
+      subtitle: "Edit subtitle"
+    add:
+      movie: "Add movie"
+      vocabulary: "Add vocabulary"
+      subtitle: "Add subtitle"
 
   time:
     formats:
@@ -267,3 +272,5 @@ en:
       genre: "-- Select genres --"
       episode: "Select episode to view subtitles"
       vocabulary: "-- Select vocabularies --"
+    create:
+      subtitle: "Add new subtitle"

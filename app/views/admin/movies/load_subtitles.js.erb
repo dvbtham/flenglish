@@ -1,2 +1,12 @@
-$('#subtitles').html('<%= j render(partial: "admin/movies/subtitle",\
-  collection: @subtitles) %>');
+$(document).ready(function() {
+  $('#subtitles').html('<%= link_to t("admin.create.subtitle"), "#",\
+  class: "btn flat btn-block btn-primary mb-8 subtitle-action",\
+  data: {episode: params[:episode]} %>\
+  <%= j render(partial: "admin/movies/subtitle",  collection: @subtitles) %>');
+  $('.subtitle-action').on('click', function(e) {
+    e.preventDefault();
+    const episodeId = $(this).data('episode');
+    $('#episode_id').val(episodeId);
+    $('#subtitle-form-modal').modal();
+  });
+})
