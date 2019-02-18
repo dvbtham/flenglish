@@ -1,7 +1,7 @@
 class VocabulariesController < ApplicationController
   include VocabulariesHelper
 
-  before_action :logged_in_user, :load_movie, :load_episode,
+  before_action :authenticate_user!, :load_movie, :load_episode,
     only: %i(create destroy)
   before_action :load_vocabulary, only: :destroy
 

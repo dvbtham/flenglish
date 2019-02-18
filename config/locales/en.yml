@@ -3,6 +3,8 @@ en:
   footer_text: "made with <span class='footer-heart'>&hearts;</span>
     by Tham and Nguyen Trung Tien"
   home: "Home"
+  welcome_someone: "Welcome %{name}!"
+  hello_someone: "Hello %{name}!"
   tips: "Tips"
   please_login: "Please login to continue."
   unaccessable: "You cannot access this page. Please login as administrator."
@@ -112,6 +114,7 @@ en:
     vocabulary: "The vocabulary was successfully updated"
     comment: "The comment was successfully updated"
     movie: "The movie was successfully updated"
+    user: "The user was successfully updated"
   tooltip:
     favorite:
       add: "Add to favorite"
@@ -121,6 +124,7 @@ en:
   follow: "Follow"
   save: "Save"
   close: "Close"
+  sure: "Are you sure?"
   title:
     edit:
       movie: "Edit movie"
@@ -133,15 +137,9 @@ en:
     formats:
       default: "%m/%d/%Y %p"
   login: "Login"
+  register_account: "Register account"
   register: "Register"
-  login_failed: "Invalid email or password. Please try again."
-  sessions:
-    new:
-      login: "Login"
-      signup_now: "Sign up now!"
-      is_new_user: "New user?"
-      email: "Email"
-      password: "Password"
+  sign_up: "Sign up"
 
   administrator: "Administrator"
   member: "Member"

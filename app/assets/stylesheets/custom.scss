@@ -261,6 +261,18 @@ $gray-dark: #DDD;
 }
 .carousel-inner img {width: 100%;}
 
+.devise-alert {
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  z-index: 999;
+}
+
+.form-control, .btn, .auto-remove-alert {
+  border-radius: 0;
+}
+
 /* footer */
 footer {
   margin-top: 20px;

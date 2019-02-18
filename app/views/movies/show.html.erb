@@ -35,7 +35,7 @@
               <%= @movie.description %>
             </div>
           </div>
-          <% if logged_in? %>
+          <% if user_signed_in? %>
             <%= render partial: "comments/comment_form",
               locals: {comments: @comments, movie_id: @movie.id} %>
           <% end %>

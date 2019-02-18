@@ -22,6 +22,6 @@ $(document).on('turbolinks:load', function() {
   $('.select2-multiple').select2();
   new app.Movies;
   setTimeout(function (){
-    $('div.alert').fadeOut();
+    $('.auto-remove-alert').fadeOut();
   }, 5000);
 })

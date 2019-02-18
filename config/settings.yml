@@ -1,3 +1,7 @@
+domain: "localhost:3000"
+smtp:
+  address: "smtp.gmail.com"
+  port: 587
 user:
   name:
     max_length: 50
@@ -53,3 +57,8 @@ text_area_size: 8
 continue: "continue"
 no_image: "/uploads/no-image.jpg"
 picture_size: 5
+controller:
+  sessions: "sessions"
+  registrations: "registrations"
+  confirmations: "confirmations"
+  passwords: "passwords"

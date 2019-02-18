@@ -4,10 +4,10 @@ class MoviesController < ApplicationController
   before_action :load_genres_pairs, :load_levels_pairs, :load_categories_pairs,
     only: :search
   before_action :load_movie, only: %i(show watch)
-  before_action :load_episode, :logged_in_user, only: :watch
+  before_action :authenticate_user!, :load_episode, only: :watch
 
   def show
-    @comment = Comment.new if logged_in?
+    @comment = Comment.new if user_signed_in?
     @comments = @movie.comments_with_pagination params[:page]
     @episode_id = @movie.episodes.any? ? @movie.episodes.first.id : 0
     respond_to do |format|
