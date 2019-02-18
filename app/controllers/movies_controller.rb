@@ -82,7 +82,7 @@ class MoviesController < ApplicationController
         user_movie = UserMovie.create!(user_id: current_user.id,
           movie_id: movie.id, views: Settings.default_views)
       end
-      movie.update_attribute :views, user_movie.views
+      movie.update_attributes! views: user_movie.views
     end
   rescue ActiveRecord::RecordNotSaved
     flash.now[:danger] = t :save_error

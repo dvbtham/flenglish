@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     root "static_pages#home"
 
     resources :users
-    resources :movies
+    resources :movies do
+      member{post :subtitles, to: "movies#load_subtitles"}
+    end
   end
 
   resources :vocabularies, :comments, only: %i(create destroy)

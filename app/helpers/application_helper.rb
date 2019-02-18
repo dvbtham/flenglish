@@ -22,4 +22,13 @@ module ApplicationHelper
   def active_tab tab_name
     return :active if params[:tab] == tab_name.to_s
   end
+
+  def single_select form, name, source, prompt
+    form.select name, source, {include_blank: prompt}, {class: "form-control"}
+  end
+
+  def multiple_select form, name, source, prompt
+    form.select name, source, {include_blank: prompt},
+      {class: "form-control", multiple: true}
+  end
 end
