@@ -99,6 +99,7 @@ en:
   create_success:
     vocabulary: "The vocabulary was successfully created"
     comment: "The comment was successfully created"
+    movie: "The movie was successfully created"
   delete_failed:
     vocabulary: "The vocabulary was unsuccessfully deleted"
     comment: "The comment was unsuccessfully deleted"
@@ -141,12 +142,19 @@ en:
   sure_to_delete: "Are you sure to delete this item?"
   delete: "Delete"
   edit: "Edit"
+  create: "Create"
   save_error: "Unable to save data."
   action: "Action"
   is_single: "Is single?"
   is_feature: "Is feature?"
   save_changes: "Save changes"
   save_exit: "Save and exit"
+  back: "Back"
+  new_movie: "Add a new movie"
+  form_errors_counter:
+    one: "The form contains %{count} error."
+    other: "The form contains %{count} errors."
+  incorrect_picture_size: "should be less than %{max_size}MB"
 
   activerecord:
     models:

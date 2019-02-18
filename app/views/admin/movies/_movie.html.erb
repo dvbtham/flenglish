@@ -1,5 +1,7 @@
 <tr>
-  <td class="td-movie"><%= image_tag movie.image_url %></td>
+  <td class="td-movie">
+    <%= image_tag movie.image %>
+  </td>
   <td>
     <%= summary movie.title_en, Settings.admin.summary.movie.title %>
     <br>

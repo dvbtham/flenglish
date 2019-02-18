@@ -4,10 +4,8 @@
       <%= t(:form_errors_counter, count: object.errors.count) %>
     </div>
     <ul>
-    <% object.errors.messages.values.each do |msg| %>
-      <% msg.each do |m| %>
-        <li><%= m %></li>
-      <% end %>
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
     <% end %>
     </ul>
   </div>
