@@ -26,20 +26,13 @@ class Movie < ApplicationRecord
   accepts_nested_attributes_for :genres, :vocabularies
 
   scope :newest, ->{order created_at: :desc}
-  scope :column_sort, ->(column){order "#{column} DESC"}
-  scope :level, ->(level_id){where level_id: level_id}
-  scope :genre, (lambda do |genre_id|
-    joins(:genres).where("genres_movies.genre_id = ?", genre_id)
-  end)
-  scope :category, ->(category_id){where category_id: category_id}
   scope :features, ->{where is_feature: true}
-  scope :term, (lambda do |term|
-    where "title_en LIKE ? OR title_vi LIKE ?", "%#{term}%", "%#{term}%"
-  end)
 
   validates :title_en, :title_vi, :description, presence: true
   validate  :picture_size
   mount_uploader :image_url, PictureUploader
+
+  ransack_alias :title, :title_vi_or_title_en
 
   def picture_size
     if image_url.size > Settings.picture_size.megabytes

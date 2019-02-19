@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :movies do
     collection do
       get :search
+      post :search
       get :json, to: "movies#load_movies_to_json"
     end
 

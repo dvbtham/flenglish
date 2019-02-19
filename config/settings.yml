@@ -62,3 +62,7 @@ controller:
   registrations: "registrations"
   confirmations: "confirmations"
   passwords: "passwords"
+order_by:
+  desc: " desc"
+  asc: " asc"
+  default: "created_at desc"

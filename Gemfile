@@ -20,6 +20,7 @@ gem "mini_magick", "4.9.2"
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
 gem "rails", "~> 5.2.2"
 gem "rails-i18n", "~> 5.1"
+gem "ransack"
 gem "rubocop", "~> 0.54.0", require: false
 gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
