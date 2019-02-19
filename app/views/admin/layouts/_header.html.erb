@@ -17,8 +17,7 @@
           <li><%= link_to t("admin.views.layouts.header.profile"), "#" %></li>
           <li><%= link_to t("admin.views.layouts.header.setting"), "#" %></li>
           <li class="divider"></li>
-          <li><%= link_to t("admin.views.layouts.header.logout"),
-            "#", method: :delete %></li>
+          <li><%= link_to t("logout"), logout_path, method: :delete %></li>
         </ul>
       </li>
     </ul>
