@@ -17,17 +17,16 @@ class MoviesController < ApplicationController
   end
 
   def search
-    search_params = params.slice :term, :level, :genre, :category, :column_sort
-    search_params.delete :column_sort unless column_valid? params[:column_sort]
-    @movies = Movie.filter(search_params).paginate page: params[:page],
-      per_page: Settings.home.movies
+    @search = ransack_params
+    @search.sorts = ransack_sort
+    @movies = ransack_result
     @sort_by = Movie.filterable_columns
   end
 
   # render to json for autocomplete search
   def load_movies_to_json
-    @movies = Movie.term params[:term]
-    render json: @movies.select(:title_en, :title_vi)
+    @movies = Movie.newest.ransack params[:q]
+    render json: @movies.result.select("title_en, title_vi")
   end
 
   def watch
@@ -41,6 +40,23 @@ class MoviesController < ApplicationController
   end
 
   private
+
+  def ransack_params
+    Movie.newest.ransack params[:q]
+  end
+
+  def ransack_result
+    if :is_feature.to_s == params[:sort]
+      @search.result.features
+    else
+      @search.result
+    end.paginate page: params[:page], per_page: Settings.home.movies
+  end
+
+  def ransack_sort
+    return params[:sort] + Settings.order_by.desc if params[:sort].present?
+    Settings.order_by.default
+  end
 
   def load_genres_pairs
     @genres = Genre.key_value_pairs

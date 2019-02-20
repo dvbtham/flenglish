@@ -19,7 +19,9 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
-  $('.select2-multiple').select2();
+  $('.select2-multiple').select2({
+    placeholder: '-- Select items --'
+  });
   new app.Movies;
   setTimeout(function (){
     $('.auto-remove-alert').fadeOut();

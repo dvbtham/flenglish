@@ -269,10 +269,28 @@ $gray-dark: #DDD;
   z-index: 999;
 }
 
-.form-control, .btn, .auto-remove-alert {
-  border-radius: 0;
+.form-control, .btn, .auto-remove-alert,
+.select2-container--default .select2-selection--multiple {
+  border-radius: 0 !important;
 }
 
+.select2-container {
+  min-width: 200px !important;
+  width: auto !important;
+}
+
+.select2-container--default {
+  .select2-selection--multiple {
+    border: solid #cecece 1px !important;
+    .select2-selection__choice {
+      font-size: 13px;
+    }
+    .select2-selection__rendered {
+      font-size: 14px;
+      color: black;
+    }
+  }
+}
 /* footer */
 footer {
   margin-top: 20px;

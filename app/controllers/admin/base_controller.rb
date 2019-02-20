@@ -4,8 +4,8 @@ class Admin::BaseController < ApplicationController
   before_action :admin_user
 
   def admin_user
-    return if logged_in? && current_user.administrator?
-    flash[:danger] = t :unaccessable
-    redirect_to login_path
+    return if user_signed_in? && current_user.administrator?
+    flash[:alert] = t :unaccessable
+    redirect_to new_session_path
   end
 end

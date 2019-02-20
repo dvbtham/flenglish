@@ -2,8 +2,8 @@ $(document).on('turbolinks:load', function() {
   var app = window.app = {};
 
   app.Movies = function() {
-    this._input = $('#term');
-    this._initAutocomplete();
+    this._input = $('input[data-behavior="autocomplete"]');
+    this._initAutocomplete(this._input.data('source'));
     $('.overlay').on('click', function() {
       window.location.href = $('a.video_url').attr('href');
     });
@@ -13,10 +13,14 @@ $(document).on('turbolinks:load', function() {
   };
 
   app.Movies.prototype = {
-    _initAutocomplete: function() {
+    _initAutocomplete: function(sourceUrl) {
       this._input
         .autocomplete({
-          source: '/movies/json',
+          source: function(request, response) {
+            $.get(sourceUrl, {q: {title_cont: request.term}}, function(data) {
+                response(data);
+            });
+          },
           select: $.proxy(this._select, this)
         })
         .autocomplete('instance')._renderItem = $.proxy(this._render, this);
