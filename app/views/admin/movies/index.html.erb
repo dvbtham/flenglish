@@ -4,13 +4,14 @@
       <div class="col-lg-12">
         <div class="page-header">
           <!-- form search -->
-          <%= form_tag admin_movies_path, method: :get, enforce_utf8: false,
-            class: "form-inline" do %>
+          <%= search_form_for @search, url: admin_movies_path, method: :get,
+            enforce_utf8: false, class: "form-inline" do |f| %>
             <h1>
               <%= t("admin.views.movies.page_heading") %>
-              <%= text_field_tag :term, params[:term],
-                class: "form-control" %>
-              <%= submit_tag t("admin.submit.movie.search"), name: nil,
+              <%= f.text_field :title_cont, class: "form-control",
+                value: (params[:q][:title_cont] if params[:q]),
+                data: {behavior: :autocomplete, source: "/movies/json"} %>
+              <%= f.submit t("admin.submit.movie.search"), name: nil,
                 class: "btn btn-default" %>
               <%= link_to t("new_movie"), new_admin_movie_path,
                 class: "btn btn-success" %>
@@ -19,26 +20,8 @@
         </div>
         <!-- form filter -->
         <div class="well well-sm">
-          <%= form_tag admin_movies_path, method: :get, id: "filter",
-            class: "form-inline", enforce_utf8: false, remote: true do %>
-            <%= select_tag(:level, options_for_select(@levels),
-              include_blank: t("admin.views.movies.filter_level"),
-              class: "btn btn-default") %>
-            <%= select_tag(:category,
-              options_for_select(@categories),
-              include_blank: t("admin.views.movies.filter_category"),
-              class: "btn btn-default") %>
-            <%= select_tag(:genre, options_for_select(@genres),
-              include_blank: t("admin.views.movies.filter_genre"),
-              class: "btn btn-default") %>
-            <%= select_tag(:column_sort,
-              options_for_select(@sort_by),
-              include_blank: t("admin.views.movies.filter_sort"),
-              class: "btn btn-default") %>
-            <%= submit_tag t("admin.submit.movie.filter"), name: nil,
-              class: "btn btn-default" %>
-            <%= hidden_field_tag :term, params[:term] %>
-          <% end %>
+          <%= render partial: "shared/movie_filter_form",
+            locals: {form_path: admin_movies_path} %>
         </div>
         <div><%= render "shared/flash" %></div>
         <!-- table movies -->
@@ -52,12 +35,21 @@
               <thead>
                 <tr>
                   <th></th>
-                  <th><%= t("admin.views.movies.title") %></th>
+                  <th>
+                    <%= sort_link @search, :title_en,
+                      t("admin.views.movies.title"), {remote: true} %>
+                  </th>
                   <th><%= t("admin.views.movies.cate") %></th>
                   <th><%= t("admin.views.movies.genres") %></th>
                   <th><%= t("admin.views.movies.episodes") %></th>
-                  <th><%= t("admin.views.movies.views") %></th>
-                  <th><%= t("admin.views.movies.rating") %></th>
+                  <th>
+                    <%= sort_link @search, :views,
+                      t("admin.views.movies.views"), {remote: true} %>
+                  </th>
+                  <th>
+                    <%= sort_link @search, :rating,
+                      t("admin.views.movies.rating"), {remote: true} %>
+                  </th>
                   <th><%= t("action") %></th>
                 </tr>
               </thead>

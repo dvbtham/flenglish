@@ -4,10 +4,9 @@ class Admin::MoviesController < Admin::BaseController
   before_action :load_movie, only: %i(edit update destroy)
 
   def index
-    search_params = params.slice :term, :level, :genre, :category, :column_sort
-    search_params.delete :column_sort unless column_valid? params[:column_sort]
-    @movies = Movie.filter(search_params).paginate page: params[:page],
-      per_page: Settings.home.movies
+    @search = ransack_params
+    @search.sorts = ransack_sort
+    @movies = ransack_result
     @sort_by = Movie.filterable_columns
     respond_to do |format|
       format.html
@@ -72,6 +71,23 @@ class Admin::MoviesController < Admin::BaseController
   end
 
   private
+
+  def ransack_params
+    Movie.newest.ransack params[:q]
+  end
+
+  def ransack_result
+    if :is_feature.to_s == params[:sort]
+      @search.result.features
+    else
+      @search.result
+    end.paginate page: params[:page], per_page: Settings.home.movies
+  end
+
+  def ransack_sort
+    return params[:sort] + Settings.order_by.desc if params[:sort].present?
+    Settings.order_by.default
+  end
 
   def movie_params
     params.require(:movie).permit :title_en, :title_vi, :description,

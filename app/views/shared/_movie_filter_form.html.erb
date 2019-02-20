@@ -1,0 +1,25 @@
+<%= search_form_for @search, url: form_path, method: :get,
+  enforce_utf8: false, remote: true do |f| %>
+  <div class="input-group ml-8 mt-20">
+    <span class="input-group-btn">
+      <%= f.select(:level_id_eq, @levels,
+        {include_blank: t("filter.level")},
+        {class: "btn btn-default flat btn-sort"}) %>
+      <%= f.select(:category_id_eq, @categories,
+        {include_blank: t("filter.category")},
+        {class: "btn btn-default btn-sort"}) %>
+      <%= select_tag(:sort, options_for_select(@sort_by),
+        include_blank: t("filter.sort_by"),
+        class: "btn btn-default btn-sort") %>
+      <%= multiple_select2(f, :genres_id_in, @genres, t("filter.genre")) %>
+    </span>
+    <div class="ml-20">
+      <%= f.submit t("filter.name"), name: nil,
+        class: "btn btn-default flat" %>
+      <%= link_to t("filter_reset"), form_path,
+        class: "btn btn-danger flat" %>
+      <%= f.hidden_field :title_cont,
+        value: (params[:q][:title_cont] if params[:q].present?) %>
+    </div>
+  </div>
+<% end %>

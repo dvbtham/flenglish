@@ -34,6 +34,7 @@
           enforce_utf8: false, class: "navbar-form navbar-left" do |f| %>
           <div class="input-group">
             <%= f.text_field :title_cont, class: "form-control",
+              value: (params[:q][:title_cont] if params[:q]),
               placeholder: t("search.placeholder"),
               data: {behavior: :autocomplete, source: "/movies/json"} %>
             <div class="input-group-btn">
