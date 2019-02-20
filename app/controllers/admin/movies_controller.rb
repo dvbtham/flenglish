@@ -1,4 +1,6 @@
 class Admin::MoviesController < Admin::BaseController
+  include Admin::MoviesHelper
+
   before_action :load_options_pairs, :load_dictionaries_pair,
     expect: %i(index destroy)
   before_action :load_movie, only: %i(edit update destroy)
@@ -93,7 +95,8 @@ class Admin::MoviesController < Admin::BaseController
     params.require(:movie).permit :title_en, :title_vi, :description,
       :image_url, :category_id, :level_id, :total_episodes, :is_feature,
       :views, :is_single, :rating, genre_ids: Array.new,
-      vocabulary_ids: Array.new
+      vocabulary_ids: Array.new,
+      episodes_attributes: %i(id name video_url movie_id, _destroy)
   end
 
   def load_movie

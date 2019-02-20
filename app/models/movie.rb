@@ -23,7 +23,8 @@ class Movie < ApplicationRecord
   has_and_belongs_to_many :genres
 
   delegate :name, to: :category, allow_nil: true, prefix: true
-  accepts_nested_attributes_for :genres, :vocabularies
+  accepts_nested_attributes_for :genres, :vocabularies, :episodes,
+    allow_destroy: true
 
   scope :newest, ->{order created_at: :desc}
   scope :features, ->{where is_feature: true}

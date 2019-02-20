@@ -71,6 +71,10 @@
       <div class="panel panel-default">
         <div class="panel-heading"><%= t "episodes" %></div>
         <div class="panel-body">
+          <%= f.fields_for :episodes do |builder| %>
+            <%= render "admin/movies/episode_fields", f: builder %>
+          <% end %>
+          <%= link_to_add_episodes "Add episode", f, :episodes %>
           <div id="episodes">
             <%= render partial: "admin/movies/episode",
               collection: @movie.episodes, as: :episode,

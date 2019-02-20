@@ -125,6 +125,7 @@ en:
   save: "Save"
   close: "Close"
   sure: "Are you sure?"
+  remove: "Remove"
   title:
     edit:
       movie: "Edit movie"
@@ -174,6 +175,9 @@ en:
         title_en: "English title"
         title_vi: "Vietnamese title"
         genre_ids: "Genres"
+      episode:
+        name: "Name"
+        video_url: "Video URL"
     errors:
       models:
         comment:
