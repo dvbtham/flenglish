@@ -10,7 +10,7 @@
     <div class="comment-date text-muted">
       <%= l comment.created_at %>
     </div>
-    <% if comment.owner? current_user %>
+    <% if can? :destroy, comment %>
       <%= link_to t("delete"), comment, method: :delete, remote: true,
         data: {confirm: t("sure_to_delete"), params: "movie_id=#{movie_id}"} %>
     <% end  %>

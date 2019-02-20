@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root "home#index"
 
-  devise_for :users, path: "", controllers: {passwords: "passwords"},
-    path_names: {sign_in: :login}
+  devise_for :users, path: "", controllers: {passwords: "passwords",
+    confirmations: "confirmations"}, path_names: {sign_in: :login}
   devise_scope :user do
     get :login, to: "devise/sessions#new", as: :new_session
     post :login, to: "devise/sessions#create", as: :session
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get "confirmation/new", to: "devise/confirmations#new",
       as: :new_confirmation
     get "confirmation", to: "devise/confirmations#show"
-    post "confirmation", to: "devise/confirmations#create"
+    post "confirmation", to: "confirmations#create"
   end
 
   resources :movies do
