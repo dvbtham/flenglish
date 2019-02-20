@@ -9,7 +9,7 @@
     <li class="<%= active_tab :tab2 %>">
       <%= link_to t(:vocabularies), "#vocabularies", {"data-toggle": "tab"} %>
     </li>
-    <% if logged_in? %>
+    <% if user_signed_in? %>
       <li class="<%= active_tab :tab3 %>">
         <%= link_to "#saved-vocabularies", {"data-toggle": "tab"} do %>
           <%= t(:saved_vocabularies) %>
@@ -38,7 +38,7 @@
         <% end %>
       </ul>
     </div>
-    <% if logged_in? %>
+    <% if user_signed_in? %>
       <div id="saved-vocabularies"
         class="tab-pane fade in <%= active_tab :tab3 %>">
         <ul class="subtitles">

@@ -56,3 +56,6 @@ config/environments/*.local.yml
 
 # Ignore uploads folder
 public/uploads
+
+# Ignore application configuration
+/config/application.yml

@@ -12,6 +12,24 @@
   </head>
 
   <body>
+    <div class="devise-alert">
+      <% if notice %>
+        <div class="alert alert-success alert-dismissible auto-remove-alert">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            &times;
+          </a>
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-danger alert-dismissible auto-remove-alert">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            &times;
+          </a>
+          <%= alert %>
+        </div>
+      <% end %>
+    </div>
     <%= render "layouts/header" %>
     <%= yield %>
     <%= render "layouts/footer" %>

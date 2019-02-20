@@ -1,0 +1,6 @@
+<p><%= t(:welcome, name: @email) %></p>
+
+<p><%= t(".content") %></p>
+
+<p><%= link_to t(".confirm_account"),
+  confirmation_url(confirmation_token: @token) %></p>

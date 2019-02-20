@@ -15,9 +15,7 @@ User.create!(full_name: "Thâm Davies",
              date_of_birth: "1996-09-15",
              password: "123123",
              password_confirmation: "123123",
-             role: 1,
-             activated: true,
-             activated_at: Time.zone.now)
+             role: 1)
 
 10.times do |n|
   name = Faker::Name.name
@@ -28,9 +26,7 @@ User.create!(full_name: "Thâm Davies",
                gender: Faker::Boolean.boolean,
                date_of_birth: Faker::Date.birthday(16, 60),
                password: password,
-               password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now)
+               password_confirmation: password)
 end
 
 # Dictionaries
