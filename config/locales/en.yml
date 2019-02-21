@@ -229,7 +229,7 @@ en:
             suggests: "Total suggests"
       movies:
         page_heading: "Movies"
-        title: "Name"
+        title: "Title"
         cate: "Categories"
         genres: "Genres"
         episodes: "Episodes"
