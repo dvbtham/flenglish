@@ -71,6 +71,21 @@
       <div class="panel panel-default">
         <div class="panel-heading"><%= t "episodes" %></div>
         <div class="panel-body">
+          <div id="episode-inputs">
+            <div class="alert episode-alert hidden"></div>
+            <%= hidden_field_tag :episode_movie_id, @movie.id %>
+            <%= hidden_field_tag :episode_id, "" %>
+            <div class="form-group">
+              <%= label_tag :episode_name, t(".episode_name") %>
+              <%= text_field_tag :episode_name, "", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= label_tag :episode_video, t(".episode_video_url") %>
+              <%= url_field_tag :episode_video, "", class: "form-control" %>
+            </div>
+            <%= link_to t("save"), "#",
+              class: "btn btn-primary btn-block add_episodes" %>
+          </div>
           <div id="episodes">
             <%= render partial: "admin/movies/episode",
               collection: @movie.episodes, as: :episode,

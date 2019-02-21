@@ -6,6 +6,7 @@ en:
   welcome_someone: "Welcome %{name}!"
   hello_someone: "Hello %{name}!"
   tips: "Tips"
+  error_occurs: "An error occurred while processing your request"
   please_login: "Please login to continue."
   unaccessable: "You cannot access this page. Please login as administrator."
   search:
@@ -102,14 +103,18 @@ en:
     vocabulary: "The vocabulary was successfully created"
     comment: "The comment was successfully created"
     movie: "The movie was successfully created"
+    episode: "The episode was successfully created"
   delete_failed:
     vocabulary: "The vocabulary was unsuccessfully deleted"
     comment: "The comment was unsuccessfully deleted"
     movie: "The movie was unsuccessfully deleted"
+    episode: "The episode was unsuccessfully deleted"
   delete_success:
     vocabulary: "The vocabulary was successfully deleted"
     comment: "The comment was successfully deleted"
     movie: "The movie was successfully deleted"
+    episode: "The episode was successfully deleted"
+  save_success: "Data was successfully saved"
   update_success:
     vocabulary: "The vocabulary was successfully updated"
     comment: "The comment was successfully updated"
@@ -170,6 +175,8 @@ en:
     attributes:
       comment:
         content: "Content"
+      episode:
+        video_url: "Video URL"
       movie:
         title_en: "English title"
         title_vi: "Vietnamese title"
@@ -180,8 +187,17 @@ en:
           attributes:
             content:
               blank: "%{attribute} can't be blank"
+        episode:
+          attributes:
+            name: "Name can't be blank"
+            video_url: "Video url can't be blank"
 
   admin:
+    movies:
+      form:
+        add_episode: "Add new episode"
+        episode_name: "Name:"
+        episode_video_url: "Video URL:"
     views:
       layouts:
         header:

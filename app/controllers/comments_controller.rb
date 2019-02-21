@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :load_movie, :load_comments, only: %i(create destroy)
   before_action :load_comment, only: :destroy
 
-  load_and_authorize_resource
+  authorize_resource only: %i(create destroy)
 
   def create
     @comment = Comment.new comment_params
