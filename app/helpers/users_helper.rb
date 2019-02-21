@@ -17,8 +17,12 @@ module UsersHelper
     @following ? t(:unfollow) : t(:follow)
   end
 
-  def has_favorite_movie? movie
+  def has_favorite_movie_text movie
     @favorite = current_user.favorited_movies.find_by movie_id: movie.id
-    @favorite ? t(:unfollow) : t(:follow)
+    @favorite ? t("tooltip.favorite.remove") : t(:add_favorite)
+  end
+
+  def has_favorite_movie? movie
+    current_user.favorited_movies.find_by movie_id: movie.id
   end
 end

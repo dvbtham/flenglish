@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   end
 
   resources :movie_followings, only: %i(create destroy)
+  resources :favorites, only: %i(create destroy)
 
   namespace :admin do
     root "static_pages#home"

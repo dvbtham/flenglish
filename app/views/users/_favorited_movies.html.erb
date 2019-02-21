@@ -4,7 +4,7 @@
   <% end %>
   <p><i><%= movie.title_vi %></i></p>
   <div class="follow-alert alert hidden"></div>
-  <%= link_to(has_favorite_movie?(movie), "#",
+  <%= link_to(has_favorite_movie_text(movie), "#",
     data: {movie: movie.id, user: current_user.id},
     class: "btn btn-info btn favorite flat") %>
 </li>
