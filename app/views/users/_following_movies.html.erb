@@ -1,0 +1,10 @@
+<li class="list-group-item flat mt-20">
+  <%= link_to(movie_path(id: movie.id), class: "movie-title") do %>
+    <%= movie.title_en %>
+  <% end %>
+  <p><i><%= movie.title_vi %></i></p>
+  <div class="follow-alert alert hidden"></div>
+  <%= link_to(has_follow_movie?(movie), "#",
+    data: {movie: movie.id, user: current_user.id},
+    class: "btn btn-info btn follow flat") %>
+</li>

@@ -38,6 +38,7 @@ gender:
 gravatar:
   size:
     user: 80
+    user_profile: 100
 tab:
   default: "tab1"
 per_page:

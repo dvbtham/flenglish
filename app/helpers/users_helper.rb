@@ -16,4 +16,9 @@ module UsersHelper
     @following = current_user.movie_followings.find_by movie_id: movie.id
     @following ? t(:unfollow) : t(:follow)
   end
+
+  def has_favorite_movie? movie
+    @favorite = current_user.favorited_movies.find_by movie_id: movie.id
+    @favorite ? t(:unfollow) : t(:follow)
+  end
 end

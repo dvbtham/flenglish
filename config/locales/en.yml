@@ -171,6 +171,11 @@ en:
     one: "The form contains %{count} error."
     other: "The form contains %{count} errors."
   incorrect_picture_size: "should be less than %{max_size}MB"
+  users:
+    show:
+      email: "Email"
+      gender: "Gender"
+      dob: "Birthday"
 
   activerecord:
     models:
