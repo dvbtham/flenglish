@@ -9,6 +9,7 @@ class Ability
       can :read, :all
       can :update, User, id: user.id
       can :destroy, Comment, user_id: user.id
+      can :destroy, MovieFollowing, user_id: user.id
       can :create, Comment
     end
   end

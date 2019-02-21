@@ -11,4 +11,9 @@ module UsersHelper
   def has_vocabularies? movie_id
     current_user.saved_vocabularies(movie_id).any?
   end
+
+  def has_follow_movie? movie
+    @following = current_user.movie_followings.find_by movie_id: movie.id
+    @following ? t(:unfollow) : t(:follow)
+  end
 end
