@@ -41,7 +41,7 @@
           <div id="favorite" class="tab-pane fade">
             <ul class="list-group">
               <%= render partial: "favorited_movies",
-                collection: @user.favorited_movies, as: :movie %>
+                collection: @user.favoriting, as: :movie %>
             </ul>
           </div>
         </div>

@@ -22,8 +22,13 @@ module UsersHelper
     @favorite ? t(:unfollow) : t(:follow)
   end
 
+  def has_favorite_movie_text movie
+    @favorite = current_user.favorited_movies.find_by movie_id: movie.id
+    @favorite.nil? ? t(:add_favorite) : t("tooltip.favorite.remove")
+  end
+
   def has_favorite_movie? movie
     @favorite = current_user.favorited_movies.find_by movie_id: movie.id
-    @favorite.nil? ? t(:follow) : t(:unfollow)
+    @favorite.present?
   end
 end

@@ -16,7 +16,8 @@
                 data: {movie: @movie.id, user: current_user.id},
                 class: "btn btn-info btn-block follow flat") %>
 
-              <%= link_to(t("add_favorite"), "#",
+              <%= link_to(has_favorite_movie_text(@movie), "#",
+                data: {movie: @movie.id, user: current_user.id},
                 class: "btn btn-info btn-block favorite flat") %>
             </div>
           <% end %>

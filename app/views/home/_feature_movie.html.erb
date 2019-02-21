@@ -9,8 +9,12 @@
     </p>
     <div class="extra-info">
       <p class="liked">
-        <i class="glyphicon glyphicon-heart"></i>
-        <%= t :favorite %>
+        <% if signed_in? && has_favorite_movie?(movie) %>
+          <i class="glyphicon glyphicon-heart"></i>
+        <% else %>
+          <i class="glyphicon glyphicon-heart-empty"></i>
+        <% end %>
+        <%= t "tooltip.favorite.add" %>
       </p>
       <p class="float-right">
         <i class="glyphicon glyphicon-eye-open"></i>
