@@ -2,6 +2,7 @@ class Admin::EpisodesController < Admin::BaseController
   before_action :load_episode, only: %i(destroy show)
 
   def create
+    MovieFollowingWorker.perform_async current_user, Movie.first
     @episode = Episode.find_or_create_by id: episode_params[:id]
     @episode.assign_attributes episode_params
     if @episode.save
