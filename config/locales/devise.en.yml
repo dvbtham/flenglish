@@ -68,6 +68,7 @@ en:
       new:
         minimum_password_length: "%{count} characters minimum"
       edit:
+        minimum_password_length: "%{count} characters minimum"
         title: "Edit %{resource}"
         leave_blank: "leave blank if you don't want to change it"
         cancel_account: "Cancel my account"

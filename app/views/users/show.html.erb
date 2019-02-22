@@ -1,0 +1,51 @@
+<div class="full-screen mt-20">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="panel-profile ml-30">
+          <div class="profile-image">
+            <%= gravatar_for @user,
+              {size: Settings.gravatar.size.user_profile} %>
+            <h4><%= @user.full_name %></h4>
+          </div>
+          <div class="user-info">
+            <p><strong><%= t(".email") %>: </strong><%= @user.email %></p>
+            <p><strong><%= t(".dob") %>: </strong><%= l @user.date_of_birth %></p>
+            <p><strong><%= t(".gender") %>: </strong> <%= t "#{@user.gender}" %></p>
+          </div>
+          <%= link_to t("edit"), edit_user_registration_path,
+            class: "btn btn-info btn-block edit-link" %>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <ul class="nav nav-tabs ml-30">
+          <li class="active">
+            <a data-toggle="tab" href="#following_movies">
+              <%= t :following_movies %>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#favorite">
+              <%= t :favorited_movies %>
+            </a>
+          </li>
+        </ul>
+
+        <div class="tab-content ml-30">
+          <div id="following_movies" class="tab-pane fade in active">
+            <ul class="list-group">
+              <%= render partial: "following_movies",
+                collection: @user.followed_movies, as: :movie %>
+            </ul>
+          </div>
+          <div id="favorite" class="tab-pane fade">
+            <ul class="list-group">
+              <%= render partial: "favorited_movies",
+                collection: @user.favorited_movies, as: :movie %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

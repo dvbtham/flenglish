@@ -15,8 +15,9 @@ Rails.application.routes.draw do
     get "account/cancel", to: "devise/registrations#cancel",
       as: :cancel_registration
     get "singup", to: "devise/registrations#new", as: :new_registration
-    get "profile/edit", to: "devise/registrations#edit", as: :edit_registration
-    put "profile", to: "devise/registrations#update"
+    get "registrations/edit", to: "devise/registrations#edit",
+      as: :edit_registration
+    put "registrations", to: "devise/registrations#update"
     patch "registration", to: "devise/registrations#update"
     delete "registration", to: "devise/registrations#destroy"
     post "registration", to: "devise/registrations#create"
@@ -51,6 +52,8 @@ Rails.application.routes.draw do
   end
 
   resources :vocabularies, :comments, only: %i(create destroy)
+
+  resources :users
 
   %w(404 422 500 503).each do |code|
     match code, to: "errors#show", code: code, as: "page_" << code, via: :all
