@@ -59,4 +59,8 @@ class Movie < ApplicationRecord
     return Settings.no_image unless image_url?
     image_url.url
   end
+
+  def mail_to_user_following user
+    FollowingMailer.to_users_following_movie(user, self).deliver_later
+  end
 end

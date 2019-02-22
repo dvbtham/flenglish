@@ -1,3 +1,4 @@
+no_reply_mail: "flenglish@no-reply.com"
 domain: "localhost:3000"
 smtp:
   address: "smtp.gmail.com"
