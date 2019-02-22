@@ -3,7 +3,8 @@ $(document).on('turbolinks:load', function() {
 
   app.Movies = function() {
     this._input = $('input[data-behavior="autocomplete"]');
-    this._initAutocomplete(this._input.data('source'));
+    if(this._input.length > 0)
+      this._initAutocomplete(this._input.data('source'));
     $('.overlay').on('click', function() {
       window.location.href = $('a.video_url').attr('href');
     });

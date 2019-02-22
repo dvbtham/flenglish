@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     root "static_pages#home"
 
     resources :users
+    resources :episodes
     resources :movies do
       member{post :subtitles, to: "movies#load_subtitles"}
     end
