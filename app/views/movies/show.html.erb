@@ -9,12 +9,17 @@
             <% end %>
             <div class="overlay glyphicon glyphicon-play"></div>
           </div>
-          <div class="user-overview">
-            <%= link_to(t("follow"), "#",
-              class: "btn btn-info btn-block flat") %>
-            <%= link_to(t("add_favorite"), "#",
-              class: "btn btn-info btn-block flat") %>
-          </div>
+          <% if signed_in? %>
+            <div class="user-overview">
+            <div class="follow-alert alert hidden"></div>
+              <%= link_to(has_follow_movie?(@movie), "#",
+                data: {movie: @movie.id, user: current_user.id},
+                class: "btn btn-info btn-block follow flat") %>
+
+              <%= link_to(t("add_favorite"), "#",
+                class: "btn btn-info btn-block favorite flat") %>
+            </div>
+          <% end %>
           <h3 class="rightside-header"><%= t :suggest_movie %></h3>
           <div class="aside-movies ml-30">
             <%= render "layouts/suggest_form" %>

@@ -77,6 +77,7 @@ en:
     single: "Single"
     series: "Series"
   not_found:
+    all: "The record was not found."
     movie: "The movie you're looking for cannot be found."
     episode: "The episode you're looking for cannot be found."
     content: "Opps! The page you're entered could not be found."
@@ -96,6 +97,9 @@ en:
   episodes: "Episodes"
   saved_vocabularies: "Saved vocabularies"
   saved_vocabulary: "Vocabulary added to favorite list"
+  movie_follow:
+    create: "Successfully following"
+    remove: "Successfully unfollowing"
   create_failed:
     vocabulary: "The vocabulary was unsuccessfully created"
     comment: "The comment was unsuccessfully created"
@@ -127,6 +131,7 @@ en:
 
   add_favorite: "Add to favorite"
   follow: "Follow"
+  unfollow: "Unfollow"
   save: "Save"
   close: "Close"
   sure: "Are you sure?"
@@ -264,7 +269,7 @@ en:
         gender: "Gender"
         dob: "Date of Birth"
         role: "Role"
-        activation: "Activation date"
+        join_date: "Join date"
         tool: "Tool"
         not_found: "No users found matching the above keywords"
         filter_role: "By Role"

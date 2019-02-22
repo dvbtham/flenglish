@@ -1,4 +1,4 @@
-$ ->
+ready = ->
   $('.add_episodes').on 'click', (e) ->
     data = {
       episode: {
@@ -60,3 +60,5 @@ $ ->
         $('#episode_video').val(data.video_url)
 
     e.preventDefault()
+$(document).ready(ready)
+$(document).on('turbolinks:load', ready)
