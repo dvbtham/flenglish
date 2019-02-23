@@ -30,6 +30,7 @@ class User < ApplicationRecord
   has_many :movie_vocabularies, foreign_key: :user_id,
     class_name: UserVocabulary.name, dependent: :destroy
   has_many :vocabularies, through: :movie_vocabularies, source: :dictionary
+  has_many :notifications, foreign_key: :recipient_id
 
   enum gender: {male: false, female: true}
   enum role: %i(member administrator)

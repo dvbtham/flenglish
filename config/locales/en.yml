@@ -52,6 +52,7 @@ en:
   series_month: "Series this month"
   recommended_movies: "Recommended for you"
   description: "Description"
+  select_items: "-- Select items --"
   comment:
     one: "Comment (%{count})"
     other: "Comments (%{count})"
@@ -87,9 +88,11 @@ en:
   not_have:
     subtitles: "No subtitles at the current."
     vocabularies: "No vocabularies at the current."
+    notifications: "No notifications."
   not_save:
     subtitles: "No subtitles that you've saved."
     vocabularies: "No vocabularies that you've saved."
+  mark_as_read_fail: "Mark as read failed"
   remember_me: "Remember me"
   vocabularies: "Vocabularies"
   interact_title: "Subtitles & Vocabularies"
@@ -97,6 +100,12 @@ en:
   episodes: "Episodes"
   saved_vocabularies: "Saved vocabularies"
   saved_vocabulary: "Vocabulary added to favorite list"
+  notify:
+    action:
+      added: "added"
+    type:
+      episode: "Movie (%{movie_name}) you are following has new episode."
+      comment: "a comment"
   movie_follow:
     create: "Successfully following"
     remove: "Successfully unfollowing"
