@@ -115,6 +115,7 @@ en:
   create_failed:
     vocabulary: "The vocabulary was unsuccessfully created"
     comment: "The comment was unsuccessfully created"
+    notification: "Failed while creating notifications."
   create_success:
     vocabulary: "The vocabulary was successfully created"
     comment: "The comment was successfully created"

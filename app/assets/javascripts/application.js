@@ -15,12 +15,15 @@
 //= require bootstrap
 //= require rails-ujs
 //= require activestorage
+//= require i18n
+//= require i18n/translations
+//= require i18n-js
 //= require turbolinks
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
   $('.select2-multiple').select2({
-    placeholder: '-- Select items --'
+    placeholder: I18n.t("select_items")
   });
   new app.Movies;
   setTimeout(function (){

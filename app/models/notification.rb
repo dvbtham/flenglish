@@ -4,4 +4,5 @@ class Notification < ApplicationRecord
   belongs_to :notifiable, polymorphic: true
 
   scope :unread, ->{where read_at: nil}
+  scope :get_notifiable, ->(id){where notifiable_id: id}
 end
