@@ -100,6 +100,9 @@ en:
   movie_follow:
     create: "Successfully following"
     remove: "Successfully unfollowing"
+  movie_favorite:
+    create: "Movie successfully favorited"
+    remove: "Movie successfully remove from favorited"
   create_failed:
     vocabulary: "The vocabulary was unsuccessfully created"
     comment: "The comment was unsuccessfully created"

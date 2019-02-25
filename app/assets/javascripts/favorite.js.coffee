@@ -1,13 +1,13 @@
 ready = ->
-  $('.follow').on 'click', (e) ->
+  $('.favorite').on 'click', (e) ->
     data = {
-      follow: {
+      favorite: {
         user_id: $(this).data('user'),
         movie_id: $(this).data('movie')
       }
     }
     link = $(this)
-    $.ajax '/movie_followings',
+    $.ajax '/favorites',
       type: 'POST'
       dataType: 'json'
       data: data
