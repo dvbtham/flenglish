@@ -23,7 +23,7 @@
 
 $(document).on('turbolinks:load', function() {
   $('.select2-multiple').select2({
-    placeholder: I18n.t("select_items")
+    placeholder: I18n.t('select_items')
   });
   new app.Movies;
   setTimeout(function (){

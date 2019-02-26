@@ -4,7 +4,12 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_notifications, only: %i(index mark_as_read)
 
-  def index; end
+  def index
+    respond_to do |format|
+      format.html
+      format.json{render file: Settings.jbuilder.notifications}
+    end
+  end
 
   def mark_as_read
     Notification.transaction do
@@ -18,6 +23,7 @@ class NotificationsController < ApplicationController
   private
 
   def load_notifications
-    @notifications = current_user.notifications.unread
+    @notifications = current_user.notifications
+      .recent Settings.notifications.limit
   end
 end

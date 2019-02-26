@@ -36,4 +36,9 @@ module ApplicationHelper
     form.select name, source, {include_blank: prompt},
       {class: "form-control select2-multiple", multiple: true}
   end
+
+  def render_no_result collection, i18n_key
+    Settings.html.alert_div.sub Settings.replacement.alert_div,
+      t(i18n_key) if collection.empty?
+  end
 end
