@@ -60,5 +60,5 @@ ready = ->
         $('#episode_video').val(data.video_url)
 
     e.preventDefault()
-$(document).ready(ready)
+
 $(document).on('turbolinks:load', ready)

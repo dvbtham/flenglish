@@ -1,10 +1,12 @@
 class Admin::EpisodesController < Admin::BaseController
   before_action :load_episode, only: %i(destroy show)
+  before_action :load_movie, only: :create
 
   def create
     @episode = Episode.find_or_create_by id: episode_params[:id]
     @episode.assign_attributes episode_params
     if @episode.save
+      MovieFollowingWorker.perform_async @movie.id
       respond_to do |format|
         format.json do
           render json: {record: @episode, message: t(:save_success)}
@@ -50,5 +52,12 @@ class Admin::EpisodesController < Admin::BaseController
 
   def episode_params
     params.require("episode").permit :id, :name, :video_url, :movie_id
+  end
+
+  def load_movie
+    @movie = Movie.find_by id: episode_params[:movie_id]
+    return if @movie
+    flash[:danger] = t "not_found.movie"
+    redirect_to page_404_path
   end
 end

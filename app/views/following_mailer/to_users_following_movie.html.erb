@@ -1,0 +1,4 @@
+<h4><%= t :hello_someone, name: @user.full_name %>,</h4>
+<p><%= raw t("mailer.has_new_episode",
+  movie: "#{@movie.title_en} - #{@movie.title_vi}",
+  link: link_to(t("watch_movie"), movie_url(@movie))) %></p>
