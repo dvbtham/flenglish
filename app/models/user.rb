@@ -6,8 +6,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :async, :registerable, :confirmable,
     :recoverable, :rememberable, :validatable
 
+  # Enum, Constants
+  enum gender: {male: 0, female: 1}
+  enum role: {member: 0, administrator: 1}
+
   attr_accessor :remember_token
 
+  # Relationships
   has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :follower_id, dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,
@@ -15,7 +20,6 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :suggests
-  has_and_belongs_to_many :subtitles
   has_many :favorited_movies, foreign_key: :user_id, class_name: Favorite.name,
     dependent: :destroy
   has_many :favoriting, through: :favorited_movies, source: :movie
@@ -32,11 +36,11 @@ class User < ApplicationRecord
   has_many :vocabularies, through: :movie_vocabularies, source: :dictionary
   has_many :notifications, foreign_key: :recipient_id
 
-  enum gender: {male: false, female: true}
-  enum role: %i(member administrator)
-
+  # Validations
   validates :full_name, :date_of_birth, :gender, presence: true
+  validates :full_name, length: {maximum: Settings.user.name.max_length}
 
+  # Scopes
   scope :role, ->(role_id){where role: role_id}
   scope :gender, ->(gender_id){where gender: gender_id}
   scope :term, (lambda do |term|

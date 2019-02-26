@@ -315,3 +315,7 @@ en:
       genre: "-- Select genres --"
       episode: "Select episode to view subtitles"
       vocabulary: "-- Select vocabularies --"
+  rspec:
+    error_messages:
+      blank: "can't be blank"
+      max_length: "is too long (maximum is %{count} characters)"
