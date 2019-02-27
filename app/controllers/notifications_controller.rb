@@ -12,7 +12,7 @@ class NotificationsController < ApplicationController
     end
     render json: {success: true}
   rescue ActiveRecord::StatementInvalid, ActiveRecord::RecordNotSaved
-    render json: {success: false, error_messages: t(:mark_as_read_fail)}
+    render json: {success: false, error: t(:mark_as_read_fail)}
   end
 
   private

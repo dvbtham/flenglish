@@ -256,6 +256,13 @@ $gray-dark: #DDD;
 }
 
 /* custom */
+span[data-behavior="unread-count"] {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  padding: 2px 4px;
+}
+.bell {font-size: 16px;}
 .nav-tabs > li > a {
   border-radius: 0px !important;
 }

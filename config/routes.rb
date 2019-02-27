@@ -69,4 +69,6 @@ Rails.application.routes.draw do
   %w(404 422 500 503).each do |code|
     match code, to: "errors#show", code: code, as: "page_" << code, via: :all
   end
+
+  mount ActionCable.server, at: "/cable"
 end

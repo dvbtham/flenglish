@@ -28,16 +28,18 @@ class Admin::EpisodesController < Admin::BaseController
   end
 
   def destroy
-    if @episode.destroy
+    Episode.transaction do
+      @episode.destroy!
+      Notification.get_notifiable(@episode.id).each &:destroy!
       respond_to do |format|
         format.json{render json: {message: t("delete_success.episode")}}
       end
-    else
-      respond_to do |format|
-        format.json do
-          render json: {error_messages: t("delete_failed.episode"),
-            has_errors: Settings.error_status.internal}
-        end
+    end
+  rescue ActiveRecord::RecordNotDestroyed
+    respond_to do |format|
+      format.json do
+        render json: {error_messages: t("delete_failed.episode"),
+          has_errors: Settings.error_status.internal}
       end
     end
   end
