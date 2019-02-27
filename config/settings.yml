@@ -68,3 +68,4 @@ order_by:
   desc: " desc"
   asc: " asc"
   default: "created_at desc"
+notify_type_section: "notify.type."

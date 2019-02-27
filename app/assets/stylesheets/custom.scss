@@ -296,6 +296,18 @@ $gray-dark: #DDD;
   margin-left: -12px;
 }
 
+.list-group {
+  width: 300px;
+  .list-group-item {
+    border-top: none;
+    a {
+        text-decoration: none;
+        padding: 0px;
+    }
+  }
+}
+
+
 /* profile */
 .panel-profile {
   width: 100%;

@@ -60,6 +60,11 @@ Rails.application.routes.draw do
   resources :vocabularies, :comments, only: %i(create destroy)
 
   resources :users
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
 
   %w(404 422 500 503).each do |code|
     match code, to: "errors#show", code: code, as: "page_" << code, via: :all

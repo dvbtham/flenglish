@@ -7,6 +7,7 @@ class Admin::EpisodesController < Admin::BaseController
     @episode.assign_attributes episode_params
     if @episode.save
       MovieFollowingWorker.perform_async @movie.id
+      NotificationWorker.perform_async @episode.id, current_user.id
       respond_to do |format|
         format.json do
           render json: {record: @episode, message: t(:save_success)}
