@@ -196,6 +196,7 @@ en:
 
   users:
     show:
+      full_name: "Full name"
       email: "Email"
       gender: "Gender"
       dob: "Birthday"
