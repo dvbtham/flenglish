@@ -1,7 +1,7 @@
-<li class="list-group-item flat">
+<li class="list-group-item flat <%= :unread if !notification.read_at? %>">
   <%= link_to movie_path(notification.notifiable.movie,
     episode: notification.notifiable.id),
-    class: "dropdown-item #{:unread if !notification.read_at?}" do %>
+    class: "dropdown-item notification-item" do %>
     <%= build_notifiable_type notification %>
   <% end %>
 </li>

@@ -46,7 +46,8 @@ en:
     content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       Non at fuga asperiores, dicta culpa minus nesciunt eius, facere ipsa
       in fugit nihil enim. Voluptate alias totam quo numquam laborum dolorem?"
-
+  mark_all_as_read: "Mark all as read"
+  read_all_notifications: "Read all notifications"
   send_suggest: "Send"
   movies_month: "Movies this month"
   series_month: "Series this month"
@@ -89,6 +90,8 @@ en:
     subtitles: "No subtitles at the current."
     vocabularies: "No vocabularies at the current."
     notifications: "No notifications."
+    favorited_movies: "No movies in favorite list."
+    following_movies: "No movies in following list."
   not_save:
     subtitles: "No subtitles that you've saved."
     vocabularies: "No vocabularies that you've saved."
@@ -143,6 +146,7 @@ en:
       remove: "Remove from favorite"
 
   add_favorite: "Add to favorite"
+  your_notifications: "Your notifications"
   follow: "Follow"
   unfollow: "Unfollow"
   save: "Save"

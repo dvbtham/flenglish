@@ -3,7 +3,7 @@ class NotificationWorker
 
   sidekiq_options queue: :notify
 
-  def perform episode_id, user_id
+  def perform episode_id, user_id, limit
     notifications = {}
     actor = User.find_by id: user_id
     episode = Episode.find_by id: episode_id
@@ -13,7 +13,7 @@ class NotificationWorker
         if actor != user
           Notification.create! recipient: user, actor: actor,
             action: I18n.t("notify.action.added"), notifiable: episode
-          notifications[user.id] = render_notifications_of user
+          notifications[user.id] = render_notifications_of user, limit
         end
       end
     end
@@ -26,8 +26,9 @@ class NotificationWorker
 
   private
 
-  def render_notifications_of user
-    user.notifications.unread.map do |notification|
+  def render_notifications_of user, limit
+    user.notifications
+      .recent(limit).map do |notification|
       template = ApplicationController
         .renderer.render(partial: "notifications/" +
         "#{notification.notifiable_type.underscore.pluralize}/" +

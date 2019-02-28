@@ -69,3 +69,11 @@ order_by:
   asc: " asc"
   default: "created_at desc"
 notify_type_section: "notify.type."
+notifications:
+  limit: 6
+jbuilder:
+  notifications: "/notifications/index.json.jbuilder"
+replacement:
+  alert_div: "#"
+html:
+  alert_div: "<div class='alert alert-danger mt-20 flat'>#</div>"

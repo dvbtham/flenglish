@@ -29,6 +29,11 @@
               <%= t :favorited_movies %>
             </a>
           </li>
+          <li>
+            <a data-toggle="tab" href="#notifications">
+              <%= t :your_notifications %>
+            </a>
+          </li>
         </ul>
 
         <div class="tab-content ml-30">
@@ -36,12 +41,24 @@
             <ul class="list-group">
               <%= render partial: "following_movies",
                 collection: @user.followed_movies, as: :movie %>
+              <%= raw render_no_result @user.followed_movies,
+                "not_have.following_movies" %>
             </ul>
           </div>
           <div id="favorite" class="tab-pane fade">
             <ul class="list-group">
               <%= render partial: "favorited_movies",
                 collection: @user.favoriting, as: :movie %>
+              <%= raw render_no_result @user.favoriting,
+                "not_have.favorited_movies" %>
+            </ul>
+          </div>
+          <div id="notifications" class="tab-pane fade">
+            <ul class="list-group mt-20">
+              <%= render partial: "notification",
+                collection: @user.notifications %>
+              <%= raw render_no_result @user.notifications,
+                "not_have.notifications" %>
             </ul>
           </div>
         </div>

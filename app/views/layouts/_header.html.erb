@@ -61,14 +61,19 @@
             <li class="nav-item btn-group" data-behavior="notifications"
               data-notifications="<%= render template: "notifications/index",
               formats: [:json] %>">
-              <a class="dropdown-toggle nav-link" type="button"
+              <a class="dropdown-toggle notify-toggle nav-link" type="button"
                 data-behavior="notifications-link" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="glyphicon glyphicon-bell bell"></i>
                 <span class="badge" data-behavior="unread-count"></span>
               </a>
-              <div class="dropdown-menu flat">
+              <div class="dropdown-menu dropdown-notify flat">
+                <a class="notifications_link mark_as_read" href="">
+                  <%= t :mark_all_as_read %>
+                </a>
                 <ul class="list-group" data-behavior="notification-items"></ul>
+                <%= link_to t(:read_all_notifications), user_path(current_user),
+                  class: "notifications_link read_all" %>
               </div>
             </li>
             <li class="dropdown">

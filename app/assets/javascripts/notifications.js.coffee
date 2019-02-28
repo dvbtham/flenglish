@@ -10,6 +10,8 @@ $(document).on 'turbolinks:load', () ->
       if @notifications.length > 0
         @handleSuccess @notifications.data('notifications')
         $('.mark_as_read').on 'click', @marAllAsRead
+        $('.read_all').on 'click', (e) ->
+          window.location.href = $(this).prop 'href'
         @getNewNotifications()
 
     getNewNotifications: ->
@@ -21,13 +23,18 @@ $(document).on 'turbolinks:load', () ->
       )
 
     marAllAsRead: (e) =>
+      _handleAlertBox = @handleAlertBox
       $.ajax(
         url: '/notifications/mark_as_read'
         dataType: 'JSON'
         method: 'POST'
-        success: (response) ->
-          @handleAlertBox response
-          $('[data-behavior="unread-count"]').text(0) if response.success
+        success: (response) =>
+          if response.success
+            $('.list-group-item').each (i, e) ->
+              $(e).removeClass 'unread'
+            $('[data-behavior="unread-count"]').text(0)
+          else
+            _handleAlertBox response
       )
       e.preventDefault()
 
