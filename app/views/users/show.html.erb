@@ -6,9 +6,9 @@
           <div class="profile-image">
             <%= gravatar_for @user,
               {size: Settings.gravatar.size.user_profile} %>
-            <h4><%= @user.full_name %></h4>
           </div>
           <div class="user-info">
+            <p><strong><%= t(".full_name") %>: </strong><%= @user.full_name %></p>
             <p><strong><%= t(".email") %>: </strong><%= @user.email %></p>
             <p><strong><%= t(".dob") %>: </strong><%= l @user.date_of_birth %></p>
             <p><strong><%= t(".gender") %>: </strong> <%= t "#{@user.gender}" %></p>
