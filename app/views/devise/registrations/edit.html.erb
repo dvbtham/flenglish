@@ -22,11 +22,11 @@
           <%= f.label :gender %>
           <div class="input-group">
             <label class="radio-inline">
-              <%= f.radio_button(:gender, :male) %>
+              <%= f.radio_button :gender, :male, checked: resource.male? %>
                 <%= t(:male) %>
             </label>
             <label class="radio-inline">
-              <%= f.radio_button(:gender, :female) %>
+              <%= f.radio_button :gender, :female, checked: resource.female? %>
                 <%= t(:female) %>
             </label>
           </div>
