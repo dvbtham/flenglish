@@ -23,6 +23,9 @@ en:
   daily: "Daily"
   weekly: "Weekly"
   monthly: "Monthly"
+  search_result:
+    one: "%{count} result for %{term}"
+    other: "%{count} results for %{term}"
 
   # Just for static pages, get data for each language from database later.
   movie:
@@ -52,8 +55,63 @@ en:
     vocabularies: "Vocabularies"
     conversation: "Conversation"
   filter:
+    name: "Filter"
     level: "By level..."
     genre: "By genre..."
-    newst: "Newest..."
+    newst: "Sort by..."
     category: "By category..."
+  sort_column:
+    feature: "Features"
+    newest: "Newest"
+    views: "Mosted views"
+  filter_reset: "Reset filter"
+  result:
+    one: "%{count} result"
+    other: "%{count} results"
 
+  admin:
+    views:
+      layouts:
+        header:
+          app_name: "Flenglish"
+          profile: "Profile"
+          setting: "Setting"
+          logout: "Logout"
+          dashboard: "Dashboard"
+          movies: "Manage movies"
+          users: "Manage users"
+          comments: "Manage comments"
+          suggests: "Manage suggests"
+        footer:
+          info_footer: "Project 1 - Learn English through movies"
+      static_pages:
+        home:
+          dashboard: "Dashboard"
+        statistical:
+          count: "%{count}"
+          new: "New %{name}"
+          view: "View details"
+        chart:
+          list: "List by"
+          day: "Day"
+          month: "Month"
+          year: "Year"
+          movies: "Movies chart"
+          users: "Users chart"
+        movies:
+          thead:
+            top: "Top"
+            categories: "Categories"
+            genres: "Genres"
+            name: "Movie name"
+            views: "Total views"
+            rating: "Rating"
+        users:
+          thead:
+            top: "Top"
+            name: "Full name"
+            email: "Email"
+            gender: "Gender"
+            phone: "Phone"
+            comments: "Total comments"
+            suggests: "Total suggests"
